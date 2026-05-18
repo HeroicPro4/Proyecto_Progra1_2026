@@ -5,14 +5,14 @@
 package Partidos;
 
 import java.time.LocalDateTime;
-
+import java.util.Date;
 
 public class PartidosModel {
     
     int id;
     String EquipoLocal;
     String EquipoVisitante;
-    LocalDateTime Fecha;
+    java.sql.Date Fecha;
     
     String Estadio;
     String Ciudad;
@@ -24,7 +24,7 @@ public class PartidosModel {
         this(0,"", "", null, "", "", 0, "");
     }
 
-    public PartidosModel(int id, String EquipoLocal, String EquipoVisitante, LocalDateTime Fecha, String Estadio, String Ciudad, int Capacidad, String Estado) {
+    public PartidosModel(int id, String EquipoLocal, String EquipoVisitante, java.sql.Date Fecha, String Estadio, String Ciudad, int Capacidad, String Estado) {
         this.id = id;
         this.EquipoLocal = EquipoLocal;
         this.EquipoVisitante = EquipoVisitante;
@@ -35,7 +35,7 @@ public class PartidosModel {
         this.Estado = Estado;
     }
 
-    public PartidosModel(String EquipoLocal, String EquipoVisitante, LocalDateTime Fecha, String Estadio, String Ciudad, int Capacidad, String Estado) {
+    public PartidosModel(String EquipoLocal, String EquipoVisitante, java.sql.Date Fecha, String Estadio, String Ciudad, int Capacidad, String Estado) {
         this.EquipoLocal = EquipoLocal;
         this.EquipoVisitante = EquipoVisitante;
         this.Fecha = Fecha;
@@ -73,13 +73,15 @@ public class PartidosModel {
         this.EquipoVisitante = EquipoVisitante;
     }
 
-    public LocalDateTime getFecha() {
+    public Date getFecha() {
         return Fecha;
     }
 
-    public void setFecha(LocalDateTime Fecha) {
+    public void setFecha(java.sql.Date Fecha) {
         this.Fecha = Fecha;
     }
+
+ 
 
 
 
