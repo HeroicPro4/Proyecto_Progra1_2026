@@ -4,7 +4,7 @@
  */
 package Login;
 import javax.swing.JOptionPane;
-//import vista.Dashboard;
+import Dashboard.*;
 
 /**
  *
@@ -15,8 +15,8 @@ public class Login_Controler {
         Login_DAO dao = new Login_DAO();
         
         if (dao.Validacion(loginModel)){
-           // Dashboard dashboard = new Dashboard();
-           // dashboard.setVisible(true);
+           Dashboard dashboard = new Dashboard();
+           dashboard.setVisible(true);
             vistaLogin.dispose();
         } else {
             JOptionPane.showMessageDialog(vistaLogin, "Usuario o contrasena incorrecta");

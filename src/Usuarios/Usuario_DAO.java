@@ -39,7 +39,7 @@ public class Usuario_DAO {
             return true;
         }catch(SQLException e){
         
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
         }
         return false;
     }
@@ -68,7 +68,7 @@ public class Usuario_DAO {
             
         }catch(SQLException e){
         
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
         }
         
         return false;
@@ -93,7 +93,7 @@ public class Usuario_DAO {
             return true;
         }catch(SQLException e){
         
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
         }
         
         return false;
@@ -138,7 +138,7 @@ public class Usuario_DAO {
             
         }catch(SQLException e){
         
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
         }
         
         return UP;
