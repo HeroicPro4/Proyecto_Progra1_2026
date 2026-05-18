@@ -12,7 +12,7 @@ public class Partidos_Controler {
     
     private final Partidos_DAO DAOGP = new Partidos_DAO();
     
-    public boolean GuardarPartido(String EquipoLocal, String EquipoVisitante, LocalDateTime Fecha, String Estadio, String Ciudad, int Capacidad, String Estado){
+    public boolean GuardarPartido(String EquipoLocal, String EquipoVisitante, java.sql.Date Fecha, String Estadio, String Ciudad, int Capacidad, String Estado){
         
         PartidosModel GP = new PartidosModel(0, EquipoLocal, EquipoVisitante, Fecha, Estadio, Ciudad, Capacidad, Estado);
         
@@ -20,9 +20,9 @@ public class Partidos_Controler {
     
     }
 
-    public boolean ModificarPartido(int id,String EquipoLocal, String EquipoVisitante, LocalDateTime Fecha, String Estadio, String Ciudad, int Capacidad, String Estado){
+    public boolean ModificarPartido(int id,String EquipoLocal, String EquipoVisitante, java.sql.Date Fecha, String Estadio, String Ciudad, int Capacidad, String Estado){
         
-        PartidosModel GP = new PartidosModel(0, EquipoLocal, EquipoVisitante, Fecha, Estadio, Ciudad, Capacidad, Estado);
+        PartidosModel GP = new PartidosModel(id, EquipoLocal, EquipoVisitante, Fecha, Estadio, Ciudad, Capacidad, Estado);
         
         return DAOGP.Modificar(GP);
     

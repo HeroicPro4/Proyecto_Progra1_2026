@@ -17,6 +17,9 @@ public class Partidos_DAO {
     
     public boolean guardar(PartidosModel GP){
     
+        
+        java.sql.Date fecha = new java.sql.Date(GP.getFecha().getTime());
+        
         qry="insert into partido(equipo_local, equipo_visitante, fecha, estadio, ciudad, capacidad, estado) values(?,?,?,?,?,?,?)";
         
         try(
@@ -26,7 +29,10 @@ public class Partidos_DAO {
         
             ps.setString(1, GP.getEquipoLocal());
             ps.setString(2, GP.getEquipoVisitante());
-            ps.setTimestamp(3, Timestamp.valueOf(GP.getFecha()));
+            
+            
+
+            ps.setDate(3, fecha);
             ps.setString(4, GP.getEstadio());
             ps.setString(5, GP.getCiudad());
             ps.setInt(6, GP.getCapacidad());
@@ -47,6 +53,10 @@ public class Partidos_DAO {
     
     public boolean Modificar(PartidosModel GP){
     
+        
+        
+        java.sql.Date fecha = new java.sql.Date(GP.getFecha().getTime());
+        
         qry="update partido set equipo_local=?, equipo_visitante=?, fecha=?, estadio=?, ciudad=?, capacidad=?, estado=? where id=?";
         
         try(
@@ -56,7 +66,7 @@ public class Partidos_DAO {
         
             ps.setString(1, GP.getEquipoLocal());
             ps.setString(2, GP.getEquipoVisitante());
-            ps.setTimestamp(3, Timestamp.valueOf(GP.getFecha()));
+            ps.setDate(3, fecha);
             ps.setString(4, GP.getEstadio());
             ps.setString(5, GP.getCiudad());
             ps.setInt(6, GP.getCapacidad());
@@ -106,7 +116,7 @@ public class Partidos_DAO {
     
         PartidosModel GP=null;
         
-        qry="Select * from partido where where id=?";
+        qry="Select * from partido where id=?";
         
         try(
                 Connection cn = neon.getConnection();
@@ -124,7 +134,7 @@ public class Partidos_DAO {
                         rs.getInt("id"),
                         rs.getString("equipo_local"),
                         rs.getString("equipo_visitante"),
-                        rs.getTimestamp("fecha").toLocalDateTime(),
+                        rs.getDate("fecha"),
                         rs.getString("estadio"),
                         rs.getString("ciudad"),
                         rs.getInt("capacidad"),
@@ -143,7 +153,7 @@ public class Partidos_DAO {
             
         }catch(SQLException e){
         
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
         }
         
         return GP;
@@ -169,7 +179,7 @@ public class Partidos_DAO {
                         rs.getInt("id"),
                         rs.getString("equipo_local"),
                         rs.getString("equipo_visitante"),
-                        rs.getTimestamp("fecha").toLocalDateTime(),
+                        rs.getDate("fecha"),
                         rs.getString("estadio"),
                         rs.getString("ciudad"),
                         rs.getInt("capacidad"),
