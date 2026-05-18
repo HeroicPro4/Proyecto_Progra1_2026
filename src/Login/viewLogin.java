@@ -93,6 +93,13 @@ public class viewLogin extends javax.swing.JFrame {
         
         Login_Controler controlador = new Login_Controler();
         controlador.iniciarSesion(login, this);
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_loginbtnActionPerformed
 
     /**
