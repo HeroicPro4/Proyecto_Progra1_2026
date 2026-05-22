@@ -16,6 +16,9 @@ public class viestaCliente extends javax.swing.JFrame {
 
     private final ControladorCliente Controler = new ControladorCliente();
     
+    
+            
+    
     private DefaultTableModel ModeloTabla = new DefaultTableModel(new Object[]{"ID", "Nombre","Apellido","Telefono","Email","Direccion"},0);
             
             
@@ -25,6 +28,7 @@ public class viestaCliente extends javax.swing.JFrame {
         CargarTabla();
         SoloLetra(txtNombre);
         SoloLetra(txtApellido);
+        System.out.println("hola");
     }
 
     private void CargarTabla(){
