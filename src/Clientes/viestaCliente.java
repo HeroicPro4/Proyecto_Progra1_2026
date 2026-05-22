@@ -4,7 +4,10 @@
  */
 package Clientes;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class viestaCliente extends javax.swing.JFrame {
@@ -20,6 +23,8 @@ public class viestaCliente extends javax.swing.JFrame {
         initComponents();
         TablaCliente.setModel(ModeloTabla);
         CargarTabla();
+        SoloLetra(txtNombre);
+        SoloLetra(txtApellido);
     }
 
     private void CargarTabla(){
@@ -176,7 +181,36 @@ public class viestaCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     public void SoloLetra(JTextField a){
+    
+        a.addKeyListener(new KeyAdapter() {
+        
+            public void keyTyped(KeyEvent e){
+            
+                char c=e.getKeyChar();
+                if(!Character.isLetter(c) && !Character.isWhitespace(c)){
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });  
+    }
+     
+     
+      public void SoloNumero(JTextField a){
+    
+        a.addKeyListener(new KeyAdapter() {
+        
+            public void keyTyped(KeyEvent e){
+            
+                char c=e.getKeyChar();
+                if(Character.isLetter(c) && !Character.isWhitespace(c)){
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });  
+    }
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed

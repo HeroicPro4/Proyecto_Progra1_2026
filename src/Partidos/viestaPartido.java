@@ -5,11 +5,14 @@
 package Partidos;
 
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import javax.swing.JTextField;
 
 public class viestaPartido extends javax.swing.JFrame {
     
@@ -223,6 +226,36 @@ public class viestaPartido extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+         public void SoloLetra(JTextField a){
+    
+        a.addKeyListener(new KeyAdapter() {
+        
+            public void keyTyped(KeyEvent e){
+            
+                char c=e.getKeyChar();
+                if(!Character.isLetter(c) && !Character.isWhitespace(c)){
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });  
+    }
+     
+     
+      public void SoloNumero(JTextField a){
+    
+        a.addKeyListener(new KeyAdapter() {
+        
+            public void keyTyped(KeyEvent e){
+            
+                char c=e.getKeyChar();
+                if(Character.isLetter(c) && !Character.isWhitespace(c)){
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });  
+    }
     private void txtCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCiudadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCiudadActionPerformed
