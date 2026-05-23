@@ -7,7 +7,7 @@ package Clientes;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class viestaCliente extends javax.swing.JFrame {
+public class viestaCliente extends javax.swing.JInternalFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(viestaCliente.class.getName());
 
@@ -59,10 +59,12 @@ public class viestaCliente extends javax.swing.JFrame {
         bntEliminar = new javax.swing.JButton();
         bntActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 750));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        background.setPreferredSize(new java.awt.Dimension(1030, 740));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -167,11 +169,11 @@ public class viestaCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

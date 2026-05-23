@@ -13,7 +13,7 @@ import java.sql.ResultSet;
  * @author tonit
  */
 public class Login_DAO {
-    public boolean Validacion(LoginModel login){
+    public boolean Validacion(Login_Model login){
         boolean acceso = false;
         
         try{
