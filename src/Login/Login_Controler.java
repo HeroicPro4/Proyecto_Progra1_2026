@@ -11,7 +11,7 @@ import Dashboard.*;
  * @author tonit
  */
 public class Login_Controler {
-    public void iniciarSesion(LoginModel loginModel, javax.swing.JFrame vistaLogin){
+    public void iniciarSesion(Login_Model loginModel, javax.swing.JFrame vistaLogin){
         Login_DAO dao = new Login_DAO();
         
         if (dao.Validacion(loginModel)){

@@ -8,16 +8,16 @@ package Login;
  *
  * @author tonit
  */
-public class LoginModel {
+public class Login_Model {
     private String usuario;
     private String password;
     
-    public LoginModel(){
+    public Login_Model(){
         this.usuario = "";
         this.password = "";
     }
     
-    public LoginModel(String usuario, String password){
+    public Login_Model(String usuario, String password){
         this.usuario = usuario;
         this.password = password;
     }

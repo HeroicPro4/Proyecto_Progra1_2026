@@ -8,7 +8,9 @@ package Login;
  *
  * @author tonit
  */
+
 public class viewLogin extends javax.swing.JFrame {
+    
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(viewLogin.class.getName());
 
@@ -89,10 +91,17 @@ public class viewLogin extends javax.swing.JFrame {
         String user = User_txt.getText();
         String password = new String(Password_txt.getPassword());
         
-        LoginModel login = new LoginModel(user, password);
+        Login_Model login = new Login_Model(user, password);
         
         Login_Controler controlador = new Login_Controler();
         controlador.iniciarSesion(login, this);
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_loginbtnActionPerformed
 
     /**
