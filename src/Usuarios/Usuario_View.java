@@ -178,7 +178,10 @@ public class Usuario_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnConsulatarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       String ids = JOptionPane.showInputDialog("ID a eliminar");
+       int id = Integer.parseInt(ids);
        
+       contro.Eliminar(id);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
