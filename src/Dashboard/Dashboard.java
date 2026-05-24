@@ -614,7 +614,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_btn_prodMouseClicked
 
     private void btn_provMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_provMouseClicked
-    viewTickets Init= new viewTickets();
+    vistaTikets Init= new vistaTikets();
     DesktopPane.add(Init);
     Init.setVisible(true);
         try{
