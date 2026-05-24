@@ -66,10 +66,13 @@ public class Usuario_View extends javax.swing.JInternalFrame {
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(this::btnEditarActionPerformed);
 
         btnConsulatar.setText("Consultar");
+        btnConsulatar.addActionListener(this::btnConsulatarActionPerformed);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "VENDEDOR" }));
 
@@ -157,6 +160,34 @@ public class Usuario_View extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       
+        String ids = JOptionPane.showInputDialog("codigo a modificar");
+        contro.Modificar(Integer.parseInt(ids), txtUsuario.getText(), txtPassword.getText(), cbRol.getSelectedItem().toString(), cbEstado.getSelectedItem().equals("Activo"));
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnConsulatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulatarActionPerformed
+    String ids = JOptionPane.showInputDialog("codigo a consultar");
+    int id = Integer.parseInt(ids);
+    UsuariosModel UM = contro.buscarID(id);
+    
+    txtUsuario.setText(UM.getUsuario());
+    txtPassword.setText(UM.getContrasena());
+    cbRol.setSelectedItem(UM.getRol());
+    
+    
+    
+    
+    }//GEN-LAST:event_btnConsulatarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       String ids = JOptionPane.showInputDialog("ID a eliminar");
+       int id = Integer.parseInt(ids);
+       
+       contro.Eliminar(id);
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
