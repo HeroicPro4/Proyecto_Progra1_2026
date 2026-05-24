@@ -5,7 +5,6 @@
 package Ventas;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 /**
  *
@@ -14,35 +13,33 @@ import java.time.LocalDateTime;
 public class VentasModel {
 
     private int id;
-    private int idCliente;
     java.sql.Date fecha;
+    private int idCliente;
+    private int idUsuario;
     private double total;
-    private String metodoPago;
 
-    public VentasModel() {
-        this(0, 0, null, 0.0, "");
-    }
-
-    public VentasModel(int id, int idCliente, java.sql.Date fecha, double total, String metodoPago) {
+    public VentasModel(int id, Date fecha, int idCliente, int idUsuario, double total) {
         this.id = id;
-        this.idCliente = idCliente;
         this.fecha = fecha;
+        this.idCliente = idCliente;
+        this.idUsuario = idUsuario;
         this.total = total;
-        this.metodoPago = metodoPago;
     }
 
-    public VentasModel(int idCliente, java.sql.Date fecha, double total, String metodoPago) {
-        this.idCliente = idCliente;
+    public VentasModel(Date fecha, int idCliente, int idUsuario, double total) {
         this.fecha = fecha;
+        this.idCliente = idCliente;
+        this.idUsuario = idUsuario;
         this.total = total;
-        this.metodoPago = metodoPago;
+    }
+    
+    public int getId() {
+        return id;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public int getIdCliente() { return idCliente; }
-    public void setIdCliente(int idCliente) { this.idCliente = idCliente; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Date getFecha() {
         return fecha;
@@ -52,12 +49,32 @@ public class VentasModel {
         this.fecha = fecha;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
     
 
-    public double getTotal() { return total; }
-    public void setTotal(double total) { this.total = total; }
 
-    public String getMetodoPago() { return metodoPago; }
-    public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
-
+  
 }

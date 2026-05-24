@@ -34,8 +34,8 @@ public class viewVentas extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtIdCliente = new javax.swing.JTextField();
+        txtIdUsuario = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
-        txtMetodoPago = new javax.swing.JTextField();
         bntGuardar = new javax.swing.JButton();
         bntActualizar = new javax.swing.JButton();
         bntEliminar = new javax.swing.JButton();
@@ -55,7 +55,7 @@ public class viewVentas extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Total");
 
-        jLabel4.setText("Metodo Pago");
+        jLabel4.setText("ID Usuario");
 
         bntGuardar.setText("Guardar");
         bntGuardar.addActionListener(this::bntGuardarActionPerformed);
@@ -74,7 +74,7 @@ public class viewVentas extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "ID Cliente", "Fecha", "Total", "Metodo Pago"
+                "ID", "Fecha", "ID Cliente", "ID Usuario", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -97,26 +97,26 @@ public class viewVentas extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtIdCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txtTotal)
-                                    .addComponent(txtMetodoPago)))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
                                 .addGap(18, 18, 18)
-                                .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)))
-                        .addGap(60, 60, 60)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                        .addComponent(txtTotal)
+                                        .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bntGuardar)
                             .addComponent(bntActualizar)
@@ -126,37 +126,41 @@ public class viewVentas extends javax.swing.JInternalFrame {
                             .addComponent(jButton1)
                             .addComponent(bntEliminar)
                             .addComponent(bntConsultar))))
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntGuardar)
-                    .addComponent(bntEliminar))
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
+                        .addComponent(bntGuardar)
+                        .addComponent(bntEliminar)
+                        .addComponent(jLabel2))
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bntActualizar)
                         .addComponent(bntConsultar))
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFactura)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jLabel4))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,18 +169,18 @@ public class viewVentas extends javax.swing.JInternalFrame {
     private void CargarTabla() {
         modeloTabla.setRowCount(0);
         for (VentasModel vt : contro.LIstaTodos()) {
-            modeloTabla.addRow(new Object[]{vt.getId(), vt.getIdCliente(), vt.getFecha(), vt.getTotal(), vt.getMetodoPago()});
+            modeloTabla.addRow(new Object[]{vt.getId(), vt.getFecha(),  vt.getIdCliente(), vt.getIdUsuario(), vt.getTotal()});
         }
     }
 
     private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
         try {
-            int idCliente = Integer.parseInt(txtIdCliente.getText());
             java.sql.Date fecha = new java.sql.Date(txtFecha.getDate().getTime());
+            int idCliente = Integer.parseInt(txtIdCliente.getText());
+            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
             double total = Double.parseDouble(txtTotal.getText());
-            String metodoPago = txtMetodoPago.getText();
 
-            contro.GuardarVenta(idCliente, fecha, total, metodoPago);
+            contro.GuardarVenta(fecha, idCliente, idUsuario, total);
             CargarTabla();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error en los datos. Fecha debe ser: 2024-01-15T14:30");
@@ -187,12 +191,12 @@ public class viewVentas extends javax.swing.JInternalFrame {
         String codigo = JOptionPane.showInputDialog("Ingresar codigo a actualizar");
         try {
             int id = Integer.parseInt(codigo);
-            int idCliente = Integer.parseInt(txtIdCliente.getText());
             java.sql.Date fecha = new java.sql.Date(txtFecha.getDate().getTime());
+            int idCliente = Integer.parseInt(txtIdCliente.getText());
+            int idUsuario = Integer.parseInt(txtIdUsuario.getText());
             double total = Double.parseDouble(txtTotal.getText());
-            String metodoPago = txtMetodoPago.getText();
 
-            contro.ModificarVenta(id, idCliente, fecha, total, metodoPago);
+            contro.ModificarVenta(id, fecha, idCliente, idUsuario, total);
             CargarTabla();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error en los datos. Fecha debe ser: 2024-01-15T14:30");
@@ -209,11 +213,11 @@ public class viewVentas extends javax.swing.JInternalFrame {
         String codigoString = JOptionPane.showInputDialog("Ingresar codigo a Consultar");
         int codigo = Integer.parseInt(codigoString);
         VentasModel vt = contro.ConsultarVenta(codigo);
-
-        txtIdCliente.setText(String.valueOf(vt.getIdCliente()));
+        
         java.sql.Date fecha = new java.sql.Date(txtFecha.getDate().getTime());
-        txtTotal.setText(String.valueOf(vt.getTotal()));
-        txtMetodoPago.setText(vt.getMetodoPago());
+        txtIdCliente.setText(String.valueOf(vt.getIdCliente()));
+        txtIdUsuario.setText(String.valueOf(vt.getIdUsuario()));
+        txtIdUsuario.setText(String.valueOf(vt.getTotal()));
 
         CargarTabla();
     }//GEN-LAST:event_bntConsultarActionPerformed
@@ -256,7 +260,7 @@ public class viewVentas extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtIdCliente;
-    private javax.swing.JTextField txtMetodoPago;
+    private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

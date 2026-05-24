@@ -20,16 +20,16 @@ public class Ventas_DAO {
 
     public boolean guardar(VentasModel vt) {
 
-        qry = "INSERT INTO venta(id_cliente, fecha, total, metodo_pago) VALUES(?,?,?,?)";
+        qry = "INSERT INTO venta(fecha, cliente_id, usuario_id, total) VALUES(?,?,?,?)";
 
         try (
             Connection cn = neon.getConnection();
             PreparedStatement ps = cn.prepareStatement(qry);
         ) {
-            ps.setInt(1, vt.getIdCliente());
-            ps.setDate(3, vt.fecha);
-            ps.setDouble(3, vt.getTotal());
-            ps.setString(4, vt.getMetodoPago());
+            ps.setDate(1, vt.fecha);
+            ps.setInt(2, vt.getIdCliente());
+            ps.setInt(3, vt.getIdUsuario());
+            ps.setDouble(4, vt.getTotal());
 
             ps.executeUpdate();
 
@@ -45,17 +45,16 @@ public class Ventas_DAO {
 
     public boolean Modificar(VentasModel vt) {
 
-        qry = "UPDATE venta SET id_cliente=?, fecha=?, total=?, metodo_pago=? WHERE id=?";
+        qry = "UPDATE venta set fecha=?, cliente_id=?, usuario_id=?, total=? WHERE id=?";
 
         try (
             Connection cn = neon.getConnection();
             PreparedStatement ps = cn.prepareStatement(qry);
         ) {
-            ps.setInt(1, vt.getIdCliente());
-            ps.setDate(3, vt.fecha);
-            ps.setDouble(3, vt.getTotal());
-            ps.setString(4, vt.getMetodoPago());
-            ps.setInt(5, vt.getId());
+            ps.setDate(1, vt.fecha);
+            ps.setInt(2, vt.getIdCliente());
+            ps.setInt(3, vt.getIdUsuario());
+            ps.setDouble(4, vt.getTotal());;
 
             ps.executeUpdate();
 
@@ -107,11 +106,12 @@ public class Ventas_DAO {
             while (rs.next()) {
                 vt = new VentasModel(
                     rs.getInt("id"),
-                    rs.getInt("id_cliente"),
                     rs.getDate("fecha"),
-                    rs.getDouble("total"),
-                    rs.getString("metodo_pago")
+                    rs.getInt("cliente_id"),
+                    rs.getInt("usuario_id"),
+                    rs.getDouble("total")                 
                 );
+                
             }
 
             if (vt == null) {
@@ -135,15 +135,16 @@ public class Ventas_DAO {
         try (
             Connection cn = neon.getConnection();
             PreparedStatement ps = cn.prepareStatement(qry);
-            ResultSet rs = ps.executeQuery();
+            
         ) {
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 VentasModel vt = new VentasModel(
                     rs.getInt("id"),
-                    rs.getInt("id_cliente"),
                     rs.getDate("fecha"),
-                    rs.getDouble("total"),
-                    rs.getString("metodo_pago")
+                    rs.getInt("cliente_id"),
+                    rs.getInt("usuario_id"),
+                    rs.getDouble("total")
                 );
                 lista.add(vt);
             }

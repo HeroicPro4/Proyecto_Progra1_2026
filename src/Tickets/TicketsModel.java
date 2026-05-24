@@ -11,7 +11,7 @@ package Tickets;
 public class TicketsModel {
 
     private int id;
-    //private int idCliente;
+    private int idCliente;
     private int idPartido;
     private String asiento;
     private double precio;
@@ -23,7 +23,7 @@ public class TicketsModel {
 
     public TicketsModel(int id, int idCliente, int idPartido, String asiento, double precio, String estado) {
         this.id = id;
-        //this.idCliente = idCliente;
+        this.idCliente = idCliente;
         this.idPartido = idPartido;
         this.asiento = asiento;
         this.precio = precio;
@@ -31,7 +31,7 @@ public class TicketsModel {
     }
 
     public TicketsModel(int idCliente, int idPartido, String asiento, double precio, String estado) {
-        //this.idCliente = idCliente;
+        this.idCliente = idCliente;
         this.idPartido = idPartido;
         this.asiento = asiento;
         this.precio = precio;
@@ -41,8 +41,8 @@ public class TicketsModel {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    //public int getIdCliente() { return idCliente; }
-    //public void setIdCliente(int idCliente) { this.idCliente = idCliente; }
+    public int getIdCliente() { return idCliente; }
+    public void setIdCliente(int idCliente) { this.idCliente = idCliente; }
 
     public int getIdPartido() { return idPartido; }
     public void setIdPartido(int idPartido) { this.idPartido = idPartido; }

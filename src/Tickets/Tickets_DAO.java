@@ -26,7 +26,7 @@ public class Tickets_DAO {
             Connection cn = neon.getConnection();
             PreparedStatement ps = cn.prepareStatement(qry);
         ) {
-            //ps.setInt(1, tk.getIdCliente());
+            ps.setInt(1, tk.getIdCliente());
             ps.setInt(1, tk.getIdPartido());
             ps.setString(2, tk.getAsiento());
             ps.setDouble(3, tk.getPrecio());
@@ -52,7 +52,7 @@ public class Tickets_DAO {
             Connection cn = neon.getConnection();
             PreparedStatement ps = cn.prepareStatement(qry);
         ) {
-           // ps.setInt(1, tk.getIdCliente());
+            ps.setInt(1, tk.getIdCliente());
             ps.setInt(1, tk.getIdPartido());
             ps.setString(2, tk.getAsiento());
             ps.setDouble(3, tk.getPrecio());
@@ -109,7 +109,7 @@ public class Tickets_DAO {
             while (rs.next()) {
                 tk = new TicketsModel(
                     rs.getInt("id"),
-                  //  rs.getInt("id_cliente"),
+                    rs.getInt("id_cliente"),
                     rs.getInt("id_partido"),
                     rs.getString("asiento"),
                     rs.getDouble("precio"),
@@ -143,7 +143,7 @@ public class Tickets_DAO {
             while (rs.next()) {
                 TicketsModel tk = new TicketsModel(
                     rs.getInt("id"),
-                   // rs.getInt("id_cliente"),
+                    rs.getInt("id_cliente"),
                     rs.getInt("id_partido"),
                     rs.getString("asiento"),
                     rs.getDouble("precio"),

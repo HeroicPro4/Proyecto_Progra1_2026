@@ -15,13 +15,13 @@ public class Ventas_Controler {
 
     private final Ventas_DAO vtDAO = new Ventas_DAO();
 
-    public boolean GuardarVenta(int idCliente, java.sql.Date fecha, double total, String metodoPago) {
-        VentasModel vt = new VentasModel(idCliente, fecha, total, metodoPago);
+    public boolean GuardarVenta(java.sql.Date fecha, int idCliente, int idUsuario, double total) {
+        VentasModel vt = new VentasModel(fecha, idCliente, idUsuario, total);
         return vtDAO.guardar(vt);
     }
 
-    public boolean ModificarVenta(int id, int idCliente, java.sql.Date fecha, double total, String metodoPago) {
-        VentasModel vt = new VentasModel(id, idCliente, fecha, total, metodoPago);
+    public boolean ModificarVenta(int id,java.sql.Date fecha, int idCliente, int idUsuario, double total) {
+        VentasModel vt = new VentasModel(id, fecha, idCliente, idUsuario, total);
         return vtDAO.Modificar(vt);
     }
 
