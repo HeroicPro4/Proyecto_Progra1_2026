@@ -5,6 +5,7 @@
 package Detalle_venta;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author tonit
@@ -54,10 +55,13 @@ public class Detalle_venta_view extends javax.swing.JFrame {
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(this::btnActualizarActionPerformed);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(this::btnConsultarActionPerformed);
 
         jLabel1.setText("ID Venta");
 
@@ -154,8 +158,60 @@ public class Detalle_venta_view extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+       try {
+            int idventa = Integer.parseInt(txtIdventa.getText());
+            int idticket = Integer.parseInt(txtIdticket.getText());
+            double precio = Double.parseDouble(txtPrecio.getText());
+            double iva = Double.parseDouble(txtIva.getText());
+           
+           dvc.Guardar(idventa, idticket, precio, iva);
+       }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error en los datos.");
+        }
+           
        
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        String codigo = JOptionPane.showInputDialog("Ingresar codigo a actualizar");
+
+        try{
+            int id = Integer.parseInt(codigo);
+            int idventa = Integer.parseInt(txtIdventa.getText());
+            int idticket = Integer.parseInt(txtIdticket.getText());
+            double precio = Double.parseDouble(txtPrecio.getText());
+            double iva = Double.parseDouble(txtIva.getText());
+            
+            dvc.Actualizar(id, idventa, idticket, precio, iva);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error en los datos. Fecha debe ser: 2024-01-15T14:30");
+
+        }
+        
+            
+            
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        String codigo = JOptionPane.showInputDialog("Ingresar codigo a Eliminar");
+        dvc.Eliminar(Integer.parseInt (codigo));
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+         String codigoString = JOptionPane.showInputDialog("Ingresar codigo a Consultar");
+         int codigo = Integer.parseInt(codigoString);
+         Detalle_ventaModel dvm = dvc.Consultar(codigo);
+         
+         txtIdventa.setText(String.valueOf(dvm.getIdtikect()));
+         txtIdticket.setText(String.valueOf(dvm.getIdtikect()));
+         txtPrecio.setText(String.valueOf(dvm.getPrecio()));
+         txtIva.setText(String.valueOf(dvm.getIva()));
+
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
