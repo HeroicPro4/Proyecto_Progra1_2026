@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author adrir
  */
-public class vistaTikets extends javax.swing.JInternalFrame {
+public class vistaTikets extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vistaTikets.class.getName());
 
@@ -52,7 +52,7 @@ public class vistaTikets extends javax.swing.JInternalFrame {
         bntConsultar = new javax.swing.JButton();
         bntEliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("id partido");
 
@@ -176,59 +176,6 @@ public class vistaTikets extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-        
-        int id = Integer.parseInt(txtIDpartido.getText());
-        String numeroAsiento = txtNumerodeAsiento.getText();
-        String seccion = txtSeccion.getText();
-        double precio = Double.parseDouble(txtPrecio.getText());
-        String estado = txtEstado.getText();
-        
-        controlerTikets.guardar(id, numeroAsiento, seccion, precio, estado);
-        Cargartabla();
-    }//GEN-LAST:event_bntGuardarActionPerformed
-
-    private void bntModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarActionPerformed
-       
-            int fila = TablaTiket.getSelectedRow();
-    if (fila == -1) {
-        JOptionPane.showMessageDialog(this, "Selecciona uno para editar");
-        return;
-    }
-    
-    int id = Integer.parseInt(TablaTiket.getValueAt(fila, 0).toString());
-    int partidoID = Integer.parseInt(txtIDpartido.getText());
-    String numeroAsiento = txtNumerodeAsiento.getText();
-    String Seccion = txtSeccion.getText();
-    Double precios = Double.parseDouble(txtPrecio.getText());
-    String estado = txtEstado.getText();
-    
-    if(controlerTikets.Modificar(id, partidoID, numeroAsiento, Seccion, precios, estado)){
-    
-        JOptionPane.showMessageDialog(this, "Se logro modificar");
-        Cargartabla();
-    }else{
-    
-        JOptionPane.showMessageDialog(this, "NO se logro modificar");
-    }
-            
-    
-    }//GEN-LAST:event_bntModificarActionPerformed
-
-    private void bntConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultarActionPerformed
-        
-        String ids = JOptionPane.showInputDialog("Ingrese id a Buscar");
-        
-        try{
-        
-            int id = Integer.parseInt(ids);
-            searchbyid(id);
-        }catch(NumberFormatException e){
-        
-            JOptionPane.showMessageDialog(this, "Error al buscar");
-        }
-    }//GEN-LAST:event_bntConsultarActionPerformed
-
     private void bntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEliminarActionPerformed
         
         int fila = TablaTiket.getSelectedRow();
@@ -253,6 +200,58 @@ public class vistaTikets extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_bntEliminarActionPerformed
+
+    private void bntConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultarActionPerformed
+
+        String ids = JOptionPane.showInputDialog("Ingrese id a Buscar");
+
+        try{
+
+            int id = Integer.parseInt(ids);
+            searchbyid(id);
+        }catch(NumberFormatException e){
+
+            JOptionPane.showMessageDialog(this, "Error al buscar");
+        }
+    }//GEN-LAST:event_bntConsultarActionPerformed
+
+    private void bntModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarActionPerformed
+
+        int fila = TablaTiket.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona uno para editar");
+            return;
+        }
+
+        int id = Integer.parseInt(TablaTiket.getValueAt(fila, 0).toString());
+        int partidoID = Integer.parseInt(txtIDpartido.getText());
+        String numeroAsiento = txtNumerodeAsiento.getText();
+        String Seccion = txtSeccion.getText();
+        Double precios = Double.parseDouble(txtPrecio.getText());
+        String estado = txtEstado.getText();
+
+        if(controlerTikets.Modificar(id, partidoID, numeroAsiento, Seccion, precios, estado)){
+
+            JOptionPane.showMessageDialog(this, "Se logro modificar");
+            Cargartabla();
+        }else{
+
+            JOptionPane.showMessageDialog(this, "NO se logro modificar");
+        }
+
+    }//GEN-LAST:event_bntModificarActionPerformed
+
+    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
+
+        int id = Integer.parseInt(txtIDpartido.getText());
+        String numeroAsiento = txtNumerodeAsiento.getText();
+        String seccion = txtSeccion.getText();
+        double precio = Double.parseDouble(txtPrecio.getText());
+        String estado = txtEstado.getText();
+
+        controlerTikets.guardar(id, numeroAsiento, seccion, precio, estado);
+        Cargartabla();
+    }//GEN-LAST:event_bntGuardarActionPerformed
 
  
 private void searchbyid(int id) {
