@@ -81,59 +81,59 @@ public class viestaPartido extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel1.setText("Equipo Local");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel2.setText("Equipo Visitante");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel3.setText("Fecha");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel4.setText("Estadio");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel5.setText("Ciudad");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
 
         txtEquipoLocal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtEquipoLocal.setBorder(null);
-        background.add(txtEquipoLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 280, 30));
+        background.add(txtEquipoLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 280, 30));
 
         txtEquipoVisitante.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtEquipoVisitante.setBorder(null);
-        background.add(txtEquipoVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 280, 30));
+        background.add(txtEquipoVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 280, 30));
 
         txtEstadio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtEstadio.setBorder(null);
-        background.add(txtEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 280, 30));
+        background.add(txtEstadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 280, 30));
 
         txtCiudad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtCiudad.setBorder(null);
         txtCiudad.addActionListener(this::txtCiudadActionPerformed);
-        background.add(txtCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 280, 30));
+        background.add(txtCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 280, 30));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 280, 10));
+        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 280, 10));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 280, 10));
+        background.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 280, 10));
 
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 280, 10));
+        background.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 280, 10));
 
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 280, 10));
+        background.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 280, 10));
 
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 280, 10));
+        background.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 280, 10));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel6.setText("Ingresar");
-        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         TablaPartido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,81 +148,85 @@ public class viestaPartido extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TablaPartido);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, 370));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 1030, 450));
 
-        bntLimpiar.setText("jButton2");
+        bntLimpiar.setBackground(new java.awt.Color(47, 78, 254));
+        bntLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        bntLimpiar.setText("Limpiar");
         bntLimpiar.addActionListener(this::bntLimpiarActionPerformed);
-        background.add(bntLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, -1));
+        background.add(bntLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 100, 40));
 
+        bntConsultar.setBackground(new java.awt.Color(47, 78, 254));
+        bntConsultar.setForeground(new java.awt.Color(255, 255, 255));
         bntConsultar.setText("Consultar");
         bntConsultar.addActionListener(this::bntConsultarActionPerformed);
-        background.add(bntConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, -1, -1));
+        background.add(bntConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 100, 40));
 
+        bntEliminar.setBackground(new java.awt.Color(47, 78, 254));
+        bntEliminar.setForeground(new java.awt.Color(255, 255, 255));
         bntEliminar.setText("Eliminar");
         bntEliminar.addActionListener(this::bntEliminarActionPerformed);
-        background.add(bntEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, -1, -1));
+        background.add(bntEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, 100, 40));
 
+        bntActualizar.setBackground(new java.awt.Color(47, 78, 254));
+        bntActualizar.setForeground(new java.awt.Color(255, 255, 255));
         bntActualizar.setText("Actualizar");
         bntActualizar.addActionListener(this::bntActualizarActionPerformed);
-        background.add(bntActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, -1, -1));
-        background.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 280, -1));
+        background.add(bntActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 110, 40));
+        background.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 280, -1));
 
-        bntGuardar.setBackground(new java.awt.Color(99, 0, 233));
+        bntGuardar.setBackground(new java.awt.Color(47, 78, 254));
         bntGuardar.setForeground(new java.awt.Color(255, 255, 255));
         bntGuardar.setText("Guardar");
         bntGuardar.setBorder(null);
         bntGuardar.addActionListener(this::bntGuardarActionPerformed);
-        background.add(bntGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 100, 40));
+        background.add(bntGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 100, 40));
 
         jLabel7.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel7.setText("Ciudad");
-        background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
 
         txtCiudad1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtCiudad1.setBorder(null);
         txtCiudad1.addActionListener(this::txtCiudad1ActionPerformed);
-        background.add(txtCiudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 280, 30));
+        background.add(txtCiudad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 280, 30));
 
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 280, 10));
+        background.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 280, 10));
 
         jLabel8.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel8.setText("Capacidad");
-        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, -1, -1));
 
         txtCapacidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtCapacidad.setBorder(null);
         txtCapacidad.addActionListener(this::txtCapacidadActionPerformed);
-        background.add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 280, 30));
+        background.add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 280, 30));
 
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 280, 10));
+        background.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 280, 10));
 
         jLabel9.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jLabel9.setText("Estado");
-        background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, -1, -1));
+        background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
         txtEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtEstado.setBorder(null);
         txtEstado.addActionListener(this::txtEstadoActionPerformed);
-        background.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 280, 30));
+        background.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 280, 30));
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 280, 10));
+        background.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 280, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1032, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

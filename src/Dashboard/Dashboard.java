@@ -8,6 +8,7 @@ import Clientes.*;
 import Tickets.*;
 import Ventas.*;
 import Usuarios.*;
+import Detalle_venta.*;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -42,9 +43,9 @@ LocalDate actualdate = LocalDate.now();
 //-----------------------------------------------     
 // <editor-fold defaultstate="collapsed" desc="Configuraciones de Botones">
 paneles = new JPanel[] { btn_princp, btn_emp, btn_prod, btn_prov, btn_client, btn_user, btn_fact }; 
-    Color colorNormal = new Color(71,13,188);  
-    Color colorHover = new Color(115,67,210);   
-    Color colorSeleccionado = new Color(92,38,200);
+    Color colorNormal = new Color(47,78,254);  
+    Color colorHover = new Color(129,176,254);   
+    Color colorSeleccionado = new Color(47,78,254);
 
         for (JPanel panel : paneles) {
             panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +147,7 @@ Init.setVisible(true);
             }
         });
 
-        exit_cube.setBackground(new java.awt.Color(71, 13, 188));
+        exit_cube.setBackground(new java.awt.Color(51, 102, 255));
         exit_cube.setMinimumSize(new java.awt.Dimension(50, 50));
 
         exit_txt.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
@@ -171,11 +172,14 @@ Init.setVisible(true);
         exit_cube.setLayout(exit_cubeLayout);
         exit_cubeLayout.setHorizontalGroup(
             exit_cubeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(exit_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(exit_cubeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(exit_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         exit_cubeLayout.setVerticalGroup(
             exit_cubeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(exit_txt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(exit_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout barLayout = new javax.swing.GroupLayout(bar);
@@ -193,17 +197,19 @@ Init.setVisible(true);
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        Menu.setBackground(new java.awt.Color(71, 13, 188));
+        Menu.setBackground(new java.awt.Color(47, 78, 254));
         Menu.setPreferredSize(new java.awt.Dimension(250, 720));
 
-        Title.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        Title.setFont(new java.awt.Font("Roboto Black", 0, 30)); // NOI18N
         Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setText("EMPRESA");
+        Title.setText("EQUIPO LOCAL");
 
         Title_Separator.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_princp.setBackground(new java.awt.Color(92, 38, 200));
+        btn_princp.setBackground(new java.awt.Color(47, 78, 254));
+        btn_princp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_princp.setDoubleBuffered(false);
         btn_princp.setPreferredSize(new java.awt.Dimension(0, 60));
         btn_princp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -233,7 +239,7 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
-        btn_emp.setBackground(new java.awt.Color(71, 13, 188));
+        btn_emp.setBackground(new java.awt.Color(47, 78, 254));
         btn_emp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_empMouseClicked(evt);
@@ -243,7 +249,7 @@ Init.setVisible(true);
         btb_emp_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_emp_txt.setForeground(new java.awt.Color(255, 255, 255));
         btb_emp_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-multiple.png"))); // NOI18N
-        btb_emp_txt.setText("Empleados");
+        btb_emp_txt.setText("Usuarios");
 
         javax.swing.GroupLayout btn_empLayout = new javax.swing.GroupLayout(btn_emp);
         btn_emp.setLayout(btn_empLayout);
@@ -252,7 +258,7 @@ Init.setVisible(true);
             .addGroup(btn_empLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btb_emp_txt)
-                .addGap(116, 116, 116))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btn_empLayout.setVerticalGroup(
             btn_empLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +268,7 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
-        btn_prod.setBackground(new java.awt.Color(71, 13, 188));
+        btn_prod.setBackground(new java.awt.Color(47, 78, 254));
         btn_prod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_prodMouseClicked(evt);
@@ -272,7 +278,7 @@ Init.setVisible(true);
         btb_prod_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_prod_txt.setForeground(new java.awt.Color(255, 255, 255));
         btb_prod_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home-outline.png"))); // NOI18N
-        btb_prod_txt.setText("Productos");
+        btb_prod_txt.setText("Partidos");
 
         javax.swing.GroupLayout btn_prodLayout = new javax.swing.GroupLayout(btn_prod);
         btn_prod.setLayout(btn_prodLayout);
@@ -281,7 +287,7 @@ Init.setVisible(true);
             .addGroup(btn_prodLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btb_prod_txt)
-                .addGap(122, 122, 122))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btn_prodLayout.setVerticalGroup(
             btn_prodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +297,7 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
-        btn_prov.setBackground(new java.awt.Color(71, 13, 188));
+        btn_prov.setBackground(new java.awt.Color(47, 78, 254));
         btn_prov.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_provMouseClicked(evt);
@@ -301,7 +307,7 @@ Init.setVisible(true);
         btb_prov_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_prov_txt.setForeground(new java.awt.Color(255, 255, 255));
         btb_prov_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/proov.png"))); // NOI18N
-        btb_prov_txt.setText("Proveedores");
+        btb_prov_txt.setText("Tickets");
 
         javax.swing.GroupLayout btn_provLayout = new javax.swing.GroupLayout(btn_prov);
         btn_prov.setLayout(btn_provLayout);
@@ -310,7 +316,7 @@ Init.setVisible(true);
             .addGroup(btn_provLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btb_prov_txt)
-                .addGap(106, 106, 106))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btn_provLayout.setVerticalGroup(
             btn_provLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +326,7 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
-        btn_client.setBackground(new java.awt.Color(71, 13, 188));
+        btn_client.setBackground(new java.awt.Color(47, 78, 254));
         btn_client.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_clientMouseClicked(evt);
@@ -349,7 +355,7 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
-        btn_user.setBackground(new java.awt.Color(71, 13, 188));
+        btn_user.setBackground(new java.awt.Color(47, 78, 254));
         btn_user.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_userMouseClicked(evt);
@@ -358,8 +364,8 @@ Init.setVisible(true);
 
         btb_user_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_user_txt.setForeground(new java.awt.Color(255, 255, 255));
-        btb_user_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/account-multiple.png"))); // NOI18N
-        btb_user_txt.setText("Usuarios");
+        btb_user_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file-chart.png"))); // NOI18N
+        btb_user_txt.setText("Reportes Ventas");
 
         javax.swing.GroupLayout btn_userLayout = new javax.swing.GroupLayout(btn_user);
         btn_user.setLayout(btn_userLayout);
@@ -368,7 +374,7 @@ Init.setVisible(true);
             .addGroup(btn_userLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btb_user_txt)
-                .addGap(131, 131, 131))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btn_userLayout.setVerticalGroup(
             btn_userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,7 +384,7 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
-        btn_fact.setBackground(new java.awt.Color(71, 13, 188));
+        btn_fact.setBackground(new java.awt.Color(47, 78, 254));
         btn_fact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_factMouseClicked(evt);
@@ -388,7 +394,7 @@ Init.setVisible(true);
         btb_fact_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_fact_txt.setForeground(new java.awt.Color(255, 255, 255));
         btb_fact_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file-chart.png"))); // NOI18N
-        btb_fact_txt.setText("Facturacion");
+        btb_fact_txt.setText("Ventas");
 
         javax.swing.GroupLayout btn_factLayout = new javax.swing.GroupLayout(btn_fact);
         btn_fact.setLayout(btn_factLayout);
@@ -397,7 +403,7 @@ Init.setVisible(true);
             .addGroup(btn_factLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btb_fact_txt)
-                .addGap(112, 112, 112))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btn_factLayout.setVerticalGroup(
             btn_factLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,26 +417,28 @@ Init.setVisible(true);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_princp, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(btn_princp, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
             .addComponent(btn_emp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_prod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btn_prov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_client, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_fact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(Title))
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(Title_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_client, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_fact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(MenuLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Title)
+                            .addComponent(Title_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(89, 89, 89)
                 .addComponent(Title)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(Title_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btn_princp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,10 +454,10 @@ Init.setVisible(true);
                 .addComponent(btn_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_fact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
-        Sub_Header.setBackground(new java.awt.Color(126, 83, 212));
+        Sub_Header.setBackground(new java.awt.Color(129, 176, 254));
         Sub_Header.setPreferredSize(new java.awt.Dimension(830, 100));
 
         fecha.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
@@ -537,6 +545,8 @@ Init.setVisible(true);
             .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
         );
 
+        DesktopPane.getAccessibleContext().setAccessibleParent(Menu);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -562,7 +572,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_exit_txtMouseEntered
 
     private void exit_txtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_txtMouseExited
-        exit_cube.setBackground(new Color(71,13,188));
+        exit_cube.setBackground(new Color(51,102,255));
         exit_txt.setForeground(Color.white);
     }//GEN-LAST:event_exit_txtMouseExited
 // </editor-fold>
@@ -637,7 +647,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_btn_clientMouseClicked
 
     private void btn_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_userMouseClicked
-    Usuario_View Init= new Usuario_View();
+    Detalle_venta_view Init= new Detalle_venta_view();
     DesktopPane.add(Init);
     Init.setVisible(true);
         try{
