@@ -2,32 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Clientes;
+package Tickets;
+
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class viestaCliente extends javax.swing.JInternalFrame {
+public class viestaTickets extends javax.swing.JInternalFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(viestaCliente.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(viestaTickets.class.getName());
 
-    private final ControladorCliente Controler = new ControladorCliente();
+    private final controladorTikets Controler = new controladorTikets();
     
-    private DefaultTableModel ModeloTabla = new DefaultTableModel(new Object[]{"ID", "Nombre","Apellido","Telefono","Email","Direccion"},0);
+    private DefaultTableModel ModeloTabla = new DefaultTableModel(new Object[]{"ID","ID partido","numero de asiento","Seccion","Precios","Estado"},0);
             
             
-    public viestaCliente() {
+    public viestaTickets() {
         initComponents();
-        TablaCliente.setModel(ModeloTabla);
+        TablaTiket.setModel(ModeloTabla);
         CargarTabla();
     }
 
     private void CargarTabla(){
     
         ModeloTabla.setRowCount(0);
-        for(ClienteModel CliMod: Controler.LIstaTodos() ){
-        ModeloTabla.addRow(new Object[]{CliMod.getId(),CliMod.getNombre(),CliMod.getApellido(),CliMod.getTelefono(),CliMod.getEmail(),CliMod.getDireccion()});
+        for(modelotikets mtk: Controler.Listatodos() ){
+        ModeloTabla.addRow(new Object[]{mtk.getId(), mtk.getPartidoId(), mtk.getNumero_asiento(), mtk.getSeccion(), mtk.getPrecion(), mtk.getEstado()});
         }
     }
     @SuppressWarnings("unchecked")
@@ -41,24 +42,22 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
+        txtIDpartido = new javax.swing.JTextField();
+        txtNumerodeAsiento = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaCliente = new javax.swing.JTable();
+        TablaTiket = new javax.swing.JTable();
         bntGuardar = new javax.swing.JButton();
         bntLimpiar = new javax.swing.JButton();
         bntConsultar = new javax.swing.JButton();
         bntEliminar = new javax.swing.JButton();
         bntActualizar = new javax.swing.JButton();
+        CbEstado = new javax.swing.JComboBox<>();
+        CbSeccion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 750));
@@ -69,57 +68,42 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jLabel1.setText("Nombre");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        jLabel1.setText("ID Partido");
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jLabel2.setText("Apellido");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+        jLabel2.setText("Numero de asiento");
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jLabel3.setText("Telefono");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+        jLabel3.setText("Seccion");
+        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jLabel4.setText("Email");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        jLabel4.setText("Precio");
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jLabel5.setText("Direccion");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        jLabel5.setText("Estado");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
-        txtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNombre.setBorder(null);
-        background.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 280, 30));
+        txtIDpartido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtIDpartido.setBorder(null);
+        background.add(txtIDpartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 280, 30));
 
-        txtApellido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtApellido.setBorder(null);
-        background.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 280, 30));
+        txtNumerodeAsiento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNumerodeAsiento.setBorder(null);
+        background.add(txtNumerodeAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 280, 30));
 
-        txtTelefono.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtTelefono.setBorder(null);
-        background.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 280, 30));
-
-        txtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtEmail.setBorder(null);
-        background.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 280, 30));
-
-        txtDireccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtDireccion.setBorder(null);
-        txtDireccion.addActionListener(this::txtDireccionActionPerformed);
-        background.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 280, 30));
-
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 280, 10));
+        txtPrecio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtPrecio.setBorder(null);
+        background.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 280, 30));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
         background.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 280, 10));
 
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
         background.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 280, 10));
-
-        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 280, 10));
 
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
         background.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 280, 10));
@@ -128,7 +112,7 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         jLabel6.setText("Ingresar");
         background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        TablaCliente.setModel(new javax.swing.table.DefaultTableModel(
+        TablaTiket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -139,7 +123,7 @@ public class viestaCliente extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TablaCliente);
+        jScrollPane1.setViewportView(TablaTiket);
 
         background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, 370));
 
@@ -219,6 +203,15 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         bntActualizar.addActionListener(this::bntActualizarActionPerformed);
         background.add(bntActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 33, -1, 40));
 
+        CbEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "DISPONIBLE", "VENDIDO", "RESERVADO" }));
+        background.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 280, -1));
+
+        CbSeccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CbSeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "VIP", "PREFERENCIAL", "GENERAL" }));
+        CbSeccion.addActionListener(this::CbSeccionActionPerformed);
+        background.add(CbSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 230, 280, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -233,19 +226,15 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
     private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
       
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String telefono = txtTelefono.getText();
-        String email = txtEmail.getText();
-        String direccion = txtDireccion.getText();
+        int idpartido = Integer.parseInt(txtIDpartido.getText());
+        String numeroAsiento = txtNumerodeAsiento.getText();
+        String seccion = CbSeccion.getSelectedItem().toString();
+        double precio = Double.parseDouble(txtPrecio.getText());
+        String estado = CbEstado.getSelectedItem().toString();
         
-        Controler.GuardarCliente(nombre, apellido, telefono, email, direccion);
+        Controler.guardar(idpartido, numeroAsiento, seccion, precio, estado);
         
         CargarTabla();
     }//GEN-LAST:event_bntGuardarActionPerformed
@@ -266,42 +255,42 @@ public class viestaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntConsultarActionPerformed
 
     private void bntActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntActualizarActionPerformed
-    int fila = TablaCliente.getSelectedRow();
+    int fila = TablaTiket.getSelectedRow();
     if (fila == -1) {
         JOptionPane.showMessageDialog(this, "Selecciona un cliente para editar");
         return;
     }
         
-    String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String telefono = txtTelefono.getText();
-        String email = txtEmail.getText();
-        String direccion = txtDireccion.getText();
+        int idpartido = Integer.parseInt(txtIDpartido.getText());
+        String numeroAsiento = txtNumerodeAsiento.getText();
+        String seccion = CbSeccion.getSelectedItem().toString();
+        double precio = Double.parseDouble(txtPrecio.getText());
+        String estado = CbEstado.getSelectedItem().toString();
     
-    if(Controler.ActualizarCliente(Integer.parseInt(TablaCliente.getValueAt(fila, 0).toString()), nombre, apellido, telefono, email, direccion)){
+    if(Controler.Modificar(Integer.parseInt(TablaTiket.getValueAt(fila, 0).toString()), idpartido, numeroAsiento, seccion, precio, estado)){
     
-    JOptionPane.showMessageDialog(this, "Cliente actualizado");
+    JOptionPane.showMessageDialog(this, "Se actualizo correctamente");
     CargarTabla();
     }else{
     
-    JOptionPane.showMessageDialog(this, "Error al actualizar cliente");
+    JOptionPane.showMessageDialog(this, "Error al actualizar");
     }
     }//GEN-LAST:event_bntActualizarActionPerformed
 
     private void bntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEliminarActionPerformed
-       int fila = TablaCliente.getSelectedRow();
+       int fila = TablaTiket.getSelectedRow();
        if(fila == -1){
        
            JOptionPane.showMessageDialog(this, "Seleccione un cliente a eliminar");
            return;
        }
         
-       int id = Integer.parseInt(TablaCliente.getValueAt(fila, 0).toString());
+       int id = Integer.parseInt(TablaTiket.getValueAt(fila, 0).toString());
        
-       int confirmar = JOptionPane.showConfirmDialog(this, "¿Eliminar cliente con ID: " + id + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
+       int confirmar = JOptionPane.showConfirmDialog(this, "¿Eliminar ID: " + id + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
        
        if(confirmar == JOptionPane.YES_OPTION){
-           if(Controler.EliminarCliente(id)){
+           if(Controler.Eliminar(id)){
            
                JOptionPane.showMessageDialog(this, "Cliente Eliminado con exito");
            }else{
@@ -356,16 +345,21 @@ public class viestaCliente extends javax.swing.JInternalFrame {
        bntActualizar.setBackground(new Color(47, 78,254));
     }//GEN-LAST:event_bntActualizarMouseExited
 
+    private void CbSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbSeccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CbSeccionActionPerformed
+
 private void searchbyid(int id) {
     ModeloTabla.setRowCount(0); // Limpiar tabla
-    ClienteModel cliente = Controler.ConsultarCliente(id);
-    if (cliente != null) {
+    modelotikets mtk = Controler.ConsultarTicket(id);
+    if (mtk != null) {
         ModeloTabla.addRow(new Object[]{
-            cliente.getId(),
-            cliente.getNombre(),
-            cliente.getTelefono(),
-            cliente.getDireccion(),
-            cliente.getEmail()
+            mtk.getId(),
+            mtk.getPartidoId(),
+            mtk.getNumero_asiento(),
+            mtk.getSeccion(),
+            mtk.getPrecion(),
+            mtk.getEstado()
         });
     } else {
         JOptionPane.showMessageDialog(this, "Cliente no encontrado con ID: " + id);
@@ -374,11 +368,11 @@ private void searchbyid(int id) {
 
 private void Limpiar(){
 
-    txtNombre.setText("");
-    txtApellido.setText("");
-    txtTelefono.setText("");
-    txtEmail.setText("");
-    txtDireccion.setText("");
+    txtIDpartido.setText("");
+    txtNumerodeAsiento.setText("");
+    CbSeccion.setSelectedItem(" ");
+    txtPrecio.setText("");
+    CbEstado.setSelectedItem(" ");
     
 }
     public static void main(String args[]) {
@@ -400,11 +394,13 @@ private void Limpiar(){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new viestaCliente().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new viestaTickets().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaCliente;
+    private javax.swing.JComboBox<String> CbEstado;
+    private javax.swing.JComboBox<String> CbSeccion;
+    private javax.swing.JTable TablaTiket;
     private javax.swing.JPanel background;
     private javax.swing.JButton bntActualizar;
     private javax.swing.JButton bntConsultar;
@@ -418,16 +414,12 @@ private void Limpiar(){
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtIDpartido;
+    private javax.swing.JTextField txtNumerodeAsiento;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
