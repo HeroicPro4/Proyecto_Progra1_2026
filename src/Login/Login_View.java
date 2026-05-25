@@ -25,8 +25,6 @@ public class Login_View extends javax.swing.JFrame {
     private void initComponents() {
 
         Background = new javax.swing.JPanel();
-        Logo = new javax.swing.JLabel();
-        Empresa = new javax.swing.JLabel();
         Logo_Name = new javax.swing.JLabel();
         Semi_Background = new javax.swing.JLabel();
         bar = new javax.swing.JPanel();
@@ -51,25 +49,11 @@ public class Login_View extends javax.swing.JFrame {
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setPreferredSize(new java.awt.Dimension(1080, 720));
 
-        Logo.setBackground(new java.awt.Color(255, 255, 255));
-        Logo.setForeground(new java.awt.Color(255, 255, 255));
-        Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_2.png"))); // NOI18N
-        Logo.setMaximumSize(new java.awt.Dimension(270, 270));
-        Logo.setMinimumSize(new java.awt.Dimension(270, 270));
-        Logo.setPreferredSize(new java.awt.Dimension(270, 270));
-
-        Empresa.setBackground(new java.awt.Color(255, 255, 255));
-        Empresa.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        Empresa.setForeground(new java.awt.Color(255, 255, 255));
-        Empresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Empresa.setText("Empresa");
-
         Logo_Name.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         Logo_Name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mini_logo.png"))); // NOI18N
         Logo_Name.setText("LOGO");
 
-        Semi_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icon.jpg"))); // NOI18N
+        Semi_Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo7.png"))); // NOI18N
 
         bar.setBackground(new java.awt.Color(255, 255, 255));
         bar.setOpaque(false);
@@ -165,7 +149,7 @@ public class Login_View extends javax.swing.JFrame {
 
         Separator_Password.setForeground(new java.awt.Color(0, 0, 0));
 
-        loginbtn.setBackground(new java.awt.Color(97, 167, 165));
+        loginbtn.setBackground(new java.awt.Color(47, 0, 199));
         loginbtn.setForeground(new java.awt.Color(255, 255, 255));
         loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginbtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -215,14 +199,10 @@ public class Login_View extends javax.swing.JFrame {
                     .addComponent(Iniicio_Sesion)
                     .addComponent(User_Field)
                     .addComponent(Separator_User, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pass_Field))
-                .addGap(185, 185, 185)
-                .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Pass_Field)))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(Password_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272)
-                .addComponent(Empresa))
+                .addComponent(Password_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,24 +222,17 @@ public class Login_View extends javax.swing.JFrame {
                 .addComponent(bar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(Logo_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Iniicio_Sesion)
-                        .addGap(53, 53, 53)
-                        .addComponent(User_Field)
-                        .addGap(41, 41, 41)
-                        .addComponent(Separator_User, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(Pass_Field))
-                    .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Password_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Empresa)))
-                .addGap(101, 101, 101)
+                .addGap(100, 100, 100)
+                .addComponent(Iniicio_Sesion)
+                .addGap(53, 53, 53)
+                .addComponent(User_Field)
+                .addGap(41, 41, 41)
+                .addComponent(Separator_User, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(Pass_Field)
+                .addGap(0, 0, 0)
+                .addComponent(Password_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
                 .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGap(500, 500, 500)
@@ -310,12 +283,12 @@ public class Login_View extends javax.swing.JFrame {
     }//GEN-LAST:event_exit_txtMouseExited
 
     private void loginbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseEntered
-    loginbtn.setBackground(new Color(16,33,40));
+    loginbtn.setBackground(new Color(47,0,200));
     loginbtntxt.setForeground(Color.WHITE);    
     }//GEN-LAST:event_loginbtnMouseEntered
 
     private void loginbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseExited
-    loginbtn.setBackground(new Color(97,167,165));
+    loginbtn.setBackground(new Color(47,78,254));
     loginbtntxt.setForeground(Color.WHITE);    
     }//GEN-LAST:event_loginbtnMouseExited
 
@@ -419,9 +392,7 @@ public class Login_View extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
-    private javax.swing.JLabel Empresa;
     private javax.swing.JLabel Iniicio_Sesion;
-    private javax.swing.JLabel Logo;
     private javax.swing.JLabel Logo_Name;
     private javax.swing.JLabel Pass_Field;
     private javax.swing.JPasswordField Password_txt;
