@@ -151,31 +151,36 @@ public class viestaPartido extends javax.swing.JInternalFrame {
         background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 1030, 450));
 
         bntLimpiar.setBackground(new java.awt.Color(47, 78, 254));
+        bntLimpiar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
         bntLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         bntLimpiar.setText("Limpiar");
         bntLimpiar.addActionListener(this::bntLimpiarActionPerformed);
         background.add(bntLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 100, 40));
 
         bntConsultar.setBackground(new java.awt.Color(47, 78, 254));
+        bntConsultar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
         bntConsultar.setForeground(new java.awt.Color(255, 255, 255));
         bntConsultar.setText("Consultar");
         bntConsultar.addActionListener(this::bntConsultarActionPerformed);
         background.add(bntConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 100, 40));
 
         bntEliminar.setBackground(new java.awt.Color(47, 78, 254));
+        bntEliminar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
         bntEliminar.setForeground(new java.awt.Color(255, 255, 255));
         bntEliminar.setText("Eliminar");
         bntEliminar.addActionListener(this::bntEliminarActionPerformed);
         background.add(bntEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, 100, 40));
 
         bntActualizar.setBackground(new java.awt.Color(47, 78, 254));
+        bntActualizar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
         bntActualizar.setForeground(new java.awt.Color(255, 255, 255));
         bntActualizar.setText("Actualizar");
         bntActualizar.addActionListener(this::bntActualizarActionPerformed);
-        background.add(bntActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 110, 40));
+        background.add(bntActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, 100, 40));
         background.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 280, -1));
 
         bntGuardar.setBackground(new java.awt.Color(47, 78, 254));
+        bntGuardar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
         bntGuardar.setForeground(new java.awt.Color(255, 255, 255));
         bntGuardar.setText("Guardar");
         bntGuardar.setBorder(null);
