@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author tonit
  */
-public class Usuario_View extends javax.swing.JFrame {
+public class Usuario_View extends javax.swing.JInternalFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Usuario_View.class.getName());
     
