@@ -25,6 +25,8 @@ public class viestaPartido extends javax.swing.JFrame {
             
     public viestaPartido() {
         initComponents();
+        this.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         TablaPartido.setModel(ModeloTabla);
         CargarTabla();
         SoloLetra(txtCiudad);
@@ -109,6 +111,7 @@ public class viestaPartido extends javax.swing.JFrame {
         txtEstado = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
 
+        setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -264,7 +267,7 @@ public class viestaPartido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1032, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

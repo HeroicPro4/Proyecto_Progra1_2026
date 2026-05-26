@@ -95,6 +95,7 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         CbEstado = new javax.swing.JComboBox<>();
         CbSeccion = new javax.swing.JComboBox<>();
 
+        setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 750));
 

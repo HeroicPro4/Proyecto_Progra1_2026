@@ -42,4 +42,31 @@ public class Login_DAO {
         return acceso;
     }
     
+    public String obtenerRol(Login_Model model){
+
+      try{
+            Conexion conexion = new Conexion();
+            Connection conn = conexion.getConnection();
+            
+            String sql = "SELECT rol FROM usuario WHERE username = ? AND password = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, model.getUsuario());
+            ps.setString(2, model.getPassword());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()){
+                return  rs.getString("rol");
+            }
+            
+            rs.close();
+            ps.close();
+            conn.close();
+            
+        } catch (Exception e){
+           e.printStackTrace();
+        }
+        
+        return null;
+    }
 }
