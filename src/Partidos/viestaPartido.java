@@ -5,14 +5,11 @@
 package Partidos;
 
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import javax.swing.JTextField;
 
 public class viestaPartido extends javax.swing.JInternalFrame {
     
@@ -29,10 +26,6 @@ public class viestaPartido extends javax.swing.JInternalFrame {
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         TablaPartido.setModel(ModeloTabla);
         CargarTabla();
-        SoloLetra(txtCiudad);
-        SoloLetra(txtEquipoLocal);
-        SoloLetra(txtEquipoVisitante);
-        SoloCarcter(txtEstadio);
     }
 
     private void CargarTabla(){
@@ -41,36 +34,6 @@ public class viestaPartido extends javax.swing.JInternalFrame {
         for(PartidosModel PartMod: Controler.LIstaTodos() ){
         ModeloTabla.addRow(new Object[]{PartMod.getId(),PartMod.getEquipoLocal(),PartMod.getEquipoVisitante(),PartMod.getFecha(),PartMod.getEstadio(),PartMod.getCiudad(),PartMod.getCapacidad(),PartMod.getEstado()});
         }
-    }
-    
-    public void SoloLetra(JTextField a){
-    
-        a.addKeyListener(new KeyAdapter() {
-        
-            public void keyTyped(KeyEvent e){
-            
-                char c=e.getKeyChar();
-                if(!Character.isLetter(c) && !Character.isWhitespace(c)){
-                    getToolkit().beep();
-                    e.consume();
-                }
-            }
-        });  
-    }
-    
-    public void SoloCarcter(JTextField a){
-    
-        a.addKeyListener(new KeyAdapter() {
-        
-            public void keyTyped(KeyEvent e){
-            
-                char c=e.getKeyChar();
-                if(!Character.isWhitespace(c) && !Character.isLetter(c) && !Character.isDigit(c)){
-                    getToolkit().beep();
-                    e.consume();
-                }
-            }
-        });  
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -308,14 +271,7 @@ public class viestaPartido extends javax.swing.JInternalFrame {
         java.sql.Date fecha = new java.sql.Date(txtFecha.getDate().getTime());
         String Estadio = txtEstadio.getText();
         String ciudad  = txtCiudad.getText();
-        String capacidadS =txtCapacidad.getText();
-        
-        if(capacidadS.isBlank()){
-            JOptionPane.showMessageDialog(this, "Ingrese capacidad");
-            return;
-        }
-        
-        int capacidad = Integer.parseInt(capacidadS);
+        int capacidad = Integer.parseInt(txtCapacidad.getText());
         String Estado = txtEstado.getText();
         
     
@@ -366,17 +322,11 @@ public class viestaPartido extends javax.swing.JInternalFrame {
 
     java.sql.Date fecha = new java.sql.Date(txtFecha.getDate().getTime());
     
+
+
         String Estadio = txtEstadio.getText();
         String ciudad  = txtCiudad.getText();
-        
-        String capacidadS =txtCapacidad.getText();
-        
-        if(capacidadS.isBlank()){
-            JOptionPane.showMessageDialog(this, "Ingrese capacidad");
-            return;
-        }
-        
-        int capacidad = Integer.parseInt(capacidadS);
+        int capacidad = Integer.parseInt(txtCapacidad.getText());
         String Estado = txtEstado.getText();
         
         Controler.GuardarPartido(EquipoLocal, Equipobisitante, fecha, Estadio, ciudad, capacidad, Estado);
