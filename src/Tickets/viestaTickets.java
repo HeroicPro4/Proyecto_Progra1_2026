@@ -6,7 +6,10 @@ package Tickets;
 
 
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class viestaTickets extends javax.swing.JInternalFrame {
@@ -22,6 +25,9 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         initComponents();
         TablaTiket.setModel(ModeloTabla);
         CargarTabla();
+        SoloNumeros(txtIDpartido);
+        SoloNumeros(txtNumerodeAsiento);
+        SoloNumerosparaPrecio(txtPrecio);
     }
 
     private void CargarTabla(){
@@ -30,6 +36,36 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         for(modelotikets mtk: Controler.Listatodos() ){
         ModeloTabla.addRow(new Object[]{mtk.getId(), mtk.getPartidoId(), mtk.getNumero_asiento(), mtk.getSeccion(), mtk.getPrecion(), mtk.getEstado()});
         }
+    }
+    
+      public void SoloNumeros(JTextField a){
+    
+        a.addKeyListener(new KeyAdapter() {
+        
+            public void keyTyped(KeyEvent e){
+            
+                char c=e.getKeyChar();
+                if(Character.isLetter(c)){
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });  
+    }
+      
+      public void SoloNumerosparaPrecio(JTextField a){
+    
+        a.addKeyListener(new KeyAdapter() {
+        
+            public void keyTyped(KeyEvent e){
+            
+                char c=e.getKeyChar();
+                if(Character.isLetter(c) && c !='.'){
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });  
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -204,11 +240,11 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         background.add(bntActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 33, -1, 40));
 
         CbEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "DISPONIBLE", "VENDIDO", "RESERVADO" }));
+        CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "VENDIDO", "RESERVADO" }));
         background.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 280, -1));
 
         CbSeccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        CbSeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "VIP", "PREFERENCIAL", "GENERAL" }));
+        CbSeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VIP", "PREFERENCIAL", "GENERAL" }));
         CbSeccion.addActionListener(this::CbSeccionActionPerformed);
         background.add(CbSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 230, 280, -1));
 
@@ -231,7 +267,17 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         int idpartido = Integer.parseInt(txtIDpartido.getText());
         String numeroAsiento = txtNumerodeAsiento.getText();
         String seccion = CbSeccion.getSelectedItem().toString();
-        double precio = Double.parseDouble(txtPrecio.getText());
+        
+        String precioS = txtPrecio.getText();
+        
+        if(precioS.isBlank()){
+        
+            JOptionPane.showMessageDialog(this, "Ingrese precio");
+            return;
+        }
+        
+        double precio = Double.parseDouble(precioS);
+        
         String estado = CbEstado.getSelectedItem().toString();
         
         Controler.guardar(idpartido, numeroAsiento, seccion, precio, estado);
@@ -242,6 +288,11 @@ public class viestaTickets extends javax.swing.JInternalFrame {
     private void bntConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultarActionPerformed
   
         String ids = JOptionPane.showInputDialog("ingrese a id a buscar");
+        
+        if(ids == null){
+        
+            return;
+        }
         
         try{
         
@@ -370,9 +421,9 @@ private void Limpiar(){
 
     txtIDpartido.setText("");
     txtNumerodeAsiento.setText("");
-    CbSeccion.setSelectedItem(" ");
+    CbSeccion.setSelectedItem("VIP");
     txtPrecio.setText("");
-    CbEstado.setSelectedItem(" ");
+    CbEstado.setSelectedItem("DISPONIBLE");
     
 }
     public static void main(String args[]) {
