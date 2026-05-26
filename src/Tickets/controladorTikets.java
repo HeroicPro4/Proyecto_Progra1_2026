@@ -5,6 +5,7 @@
 package Tickets;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author adrir
@@ -15,9 +16,17 @@ public class controladorTikets {
     
     public boolean guardar(int partidoId, String numero_asiento, String seccion, double precion, String estado){
     
+        if( !numero_asiento.isBlank() && !seccion.isBlank() && precion > 0 && !estado.isBlank()){
+            
         modelotikets MT = new modelotikets(partidoId, numero_asiento, seccion, precion, estado);
         
        return daous.Guardar(MT);
+       
+        }else{
+        
+            JOptionPane.showInternalMessageDialog(null, "ingrese datos faltantes");
+            return false;
+        }
     }
     
     public boolean Modificar(int id, int partidoId, String numero_asiento, String seccion, double precion, String estado){

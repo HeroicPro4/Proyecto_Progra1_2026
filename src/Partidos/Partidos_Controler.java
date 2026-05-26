@@ -5,7 +5,7 @@
 package Partidos;
 
 import java.time.LocalDateTime;
-
+import javax.swing.JOptionPane;
 import java.util.List;
 
 public class Partidos_Controler {
@@ -14,17 +14,28 @@ public class Partidos_Controler {
     
     public boolean GuardarPartido(String EquipoLocal, String EquipoVisitante, java.sql.Date Fecha, String Estadio, String Ciudad, int Capacidad, String Estado){
         
+        if(!EquipoLocal.isBlank() && !EquipoVisitante.isBlank() && Fecha !=null && !Estadio.isBlank() && Ciudad.isBlank() && Capacidad >0){
+            
         PartidosModel GP = new PartidosModel(0, EquipoLocal, EquipoVisitante, Fecha, Estadio, Ciudad, Capacidad, Estado);
         
         return DAOGP.guardar(GP);
     
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese datos faltantes");
+            return false;
+        }
     }
 
     public boolean ModificarPartido(int id,String EquipoLocal, String EquipoVisitante, java.sql.Date Fecha, String Estadio, String Ciudad, int Capacidad, String Estado){
         
+        if(!EquipoLocal.isBlank() && !EquipoVisitante.isBlank() && Fecha !=null && !Estadio.isBlank() && Ciudad.isBlank() && Capacidad >0){
         PartidosModel GP = new PartidosModel(id, EquipoLocal, EquipoVisitante, Fecha, Estadio, Ciudad, Capacidad, Estado);
         
         return DAOGP.Modificar(GP);
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese datos faltantes");
+            return false;
+        }
     
     }
         
