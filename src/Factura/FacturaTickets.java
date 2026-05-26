@@ -1,13 +1,11 @@
 package Factura;
 
 import Conexion.Conexion;
-import Tickets.modelotikets;
-import Tickets.tiket_dao;
-import Ventas.VentasModel;
-import Ventas.Ventas_Controler;
+import Tickets.*;
+import Ventas.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
+import java.io.*;
 import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -23,6 +21,12 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
+/**
+ * @author MK
+ * @reviewer tonit
+ */
+
+
 public class FacturaTickets extends JInternalFrame {
 
     private JTable tblTickets;
@@ -31,7 +35,7 @@ public class FacturaTickets extends JInternalFrame {
     private JLabel lblHoraFecha, lblCompraId;
     private JButton btnGenerarFactura, btnResetear;
     private JComboBox<ClienteItem> cmbClientes;
-    private JComboBox<UsuarioItem> cmbUsuarios;  // Nuevo combo para usuarios
+    private JComboBox<UsuarioItem> cmbUsuarios;
     private JPanel panelTotales;
 
     private int compraId;
@@ -64,9 +68,7 @@ public class FacturaTickets extends JInternalFrame {
     private void initComponents() {
         setLayout(new BorderLayout());
 
-        // Panel izquierdo: clientes y tabla de tickets
         JPanel panelIzq = new JPanel(new BorderLayout());
-
         JPanel panelSuperior = new JPanel(new GridLayout(2, 1, 5, 5));
         JPanel panelClientes = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelClientes.add(new JLabel("Cliente:"));
@@ -92,7 +94,6 @@ public class FacturaTickets extends JInternalFrame {
         panelSuperior.add(panelUsuarios);
         panelIzq.add(panelSuperior, BorderLayout.NORTH);
 
-        // Tabla de tickets disponibles
         modeloTickets = new DefaultTableModel(new Object[]{"Seleccionar", "ID Ticket", "Partido", "Asiento", "Sección", "Precio (Q)"}, 0) {
             @Override
             public Class<?> getColumnClass(int col) {
@@ -100,7 +101,7 @@ public class FacturaTickets extends JInternalFrame {
             }
             @Override
             public boolean isCellEditable(int row, int col) {
-                return col == 0; // Solo la columna de selección es editable
+                return col == 0;
             }
         };
         tblTickets = new JTable(modeloTickets);
@@ -109,7 +110,6 @@ public class FacturaTickets extends JInternalFrame {
         JScrollPane scrollTickets = new JScrollPane(tblTickets);
         panelIzq.add(scrollTickets, BorderLayout.CENTER);
 
-        // Botones
         JPanel panelBotones = new JPanel();
         btnGenerarFactura = new JButton("Generar Factura y Vender");
         btnResetear = new JButton("Limpiar Selección");
@@ -117,7 +117,6 @@ public class FacturaTickets extends JInternalFrame {
         panelBotones.add(btnResetear);
         panelIzq.add(panelBotones, BorderLayout.SOUTH);
 
-        // Panel derecho: factura
         JPanel panelDer = new JPanel(new BorderLayout());
         JPanel panelEncabezado = new JPanel(new GridLayout(3, 1));
         panelEncabezado.add(new JLabel("-------------------- TICKET SHOP --------------------", SwingConstants.CENTER));
@@ -139,20 +138,20 @@ public class FacturaTickets extends JInternalFrame {
         add(panelIzq, BorderLayout.WEST);
         add(panelDer, BorderLayout.CENTER);
 
-        // Acciones
         btnGenerarFactura.addActionListener(this::venderTicketsYFacturar);
         btnResetear.addActionListener(e -> limpiarSeleccion());
     }
 
     private void cargarClientes() {
         Conexion conexion = new Conexion();
-        String sql = "SELECT id, nombre FROM cliente ORDER BY nombre";
+        String sql = "SELECT id, nombre, apellido FROM cliente ORDER BY nombre";
         try (Connection con = conexion.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             cmbClientes.removeAllItems();
             while (rs.next()) {
-                cmbClientes.addItem(new ClienteItem(rs.getInt("id"), rs.getString("nombre")));
+                String nombreCompleto = rs.getString("nombre") + " " + rs.getString("apellido");
+                cmbClientes.addItem(new ClienteItem(rs.getInt("id"), nombreCompleto));
             }
             if (cmbClientes.getItemCount() > 0) {
                 cmbClientes.setSelectedIndex(0);
@@ -177,7 +176,6 @@ public class FacturaTickets extends JInternalFrame {
                 cmbUsuarios.setSelectedIndex(0);
                 usuarioSeleccionado = ((UsuarioItem) cmbUsuarios.getSelectedItem()).getId();
             } else {
-                // Si no hay usuarios, mostrar un mensaje y deshabilitar la venta
                 JOptionPane.showMessageDialog(this, "No hay usuarios registrados. No se pueden realizar ventas.");
                 btnGenerarFactura.setEnabled(false);
             }
@@ -204,7 +202,6 @@ public class FacturaTickets extends JInternalFrame {
         }
     }
 
-    // CORREGIDO: usa equipo_local y equipo_visitante
     private String obtenerNombrePartido(int partidoId) {
         String sql = "SELECT equipo_local, equipo_visitante FROM partido WHERE id = ?";
         try (Connection con = new Conexion().getConnection();
@@ -212,9 +209,7 @@ public class FacturaTickets extends JInternalFrame {
             ps.setInt(1, partidoId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                String local = rs.getString("equipo_local");
-                String visitante = rs.getString("equipo_visitante");
-                return local + " vs " + visitante;
+                return rs.getString("equipo_local") + " vs " + rs.getString("equipo_visitante");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -242,18 +237,15 @@ public class FacturaTickets extends JInternalFrame {
     }
 
     private void venderTicketsYFacturar(ActionEvent evt) {
-        // Validar cliente seleccionado
         if (clienteSeleccionado == -1) {
             JOptionPane.showMessageDialog(this, "Seleccione un cliente");
             return;
         }
-        // Validar usuario seleccionado
         if (usuarioSeleccionado == -1) {
             JOptionPane.showMessageDialog(this, "Seleccione un vendedor (usuario)");
             return;
         }
 
-        // Obtener tickets seleccionados
         List<Integer> ticketsSeleccionados = new ArrayList<>();
         double subtotal = 0;
         for (int i = 0; i < modeloTickets.getRowCount(); i++) {
@@ -271,7 +263,6 @@ public class FacturaTickets extends JInternalFrame {
             return;
         }
 
-        // Validar disponibilidad y capacidad
         try {
             for (int id : ticketsSeleccionados) {
                 modelotikets t = ticketDao.buscarId(id);
@@ -285,15 +276,15 @@ public class FacturaTickets extends JInternalFrame {
 
             double iva = subtotal * 0.12;
             double total = subtotal + iva;
-
             java.sql.Date fechaActual = new java.sql.Date(System.currentTimeMillis());
-            // Usar el usuario seleccionado del combo
+
             int idVenta = ventasController.procesarVenta(fechaActual, clienteSeleccionado, usuarioSeleccionado, ticketsSeleccionados, subtotal);
 
             if (idVenta > 0) {
                 StringBuilder detalle = new StringBuilder();
                 detalle.append("FACTURA N° ").append(compraId).append("\n");
-                detalle.append("Cliente: ").append(((ClienteItem) cmbClientes.getSelectedItem()).getNombre()).append("\n");
+                ClienteItem cliente = (ClienteItem) cmbClientes.getSelectedItem();
+                detalle.append("Cliente: ").append(cliente.getNombre()).append("\n");
                 detalle.append("Vendedor: ").append(((UsuarioItem) cmbUsuarios.getSelectedItem()).getNombre()).append("\n");
                 detalle.append("---------------------------------------------------\n");
                 detalle.append(String.format("%-4s %-20s %-8s %-10s\n", "ID", "Asiento", "Sección", "Precio"));
@@ -325,6 +316,7 @@ public class FacturaTickets extends JInternalFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -402,7 +394,6 @@ public class FacturaTickets extends JInternalFrame {
         timer.start();
     }
 
-    // Clases internas
     private static class ClienteItem {
         private final int id;
         private final String nombre;
