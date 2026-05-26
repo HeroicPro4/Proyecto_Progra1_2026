@@ -29,5 +29,9 @@ public class Detalle_ventaController {
     public Detalle_ventaModel Consultar(int id){
         return dvDAO.buscarId(id);
     }
+
+    void Guardar(int idventa, int idticket, double precio) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

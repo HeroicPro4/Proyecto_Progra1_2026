@@ -19,6 +19,8 @@ public class viestaCliente extends javax.swing.JInternalFrame {
             
     public viestaCliente() {
         initComponents();
+        this.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         TablaCliente.setModel(ModeloTabla);
         CargarTabla();
     }
@@ -60,8 +62,12 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         bntEliminar = new javax.swing.JButton();
         bntActualizar = new javax.swing.JButton();
 
+        setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDoubleBuffered(true);
+        setFocusCycleRoot(false);
         setMinimumSize(new java.awt.Dimension(750, 750));
+        setOpaque(true);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

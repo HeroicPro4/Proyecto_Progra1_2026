@@ -189,4 +189,64 @@ public class tiket_dao {
                 
         return lista;        
     }
+    
+    public boolean actualizarEstadoConConexion(Connection cn, int ticketId, String nuevoEstado) throws SQLException {
+    String qry = "UPDATE ticket SET estado = ? WHERE id = ?";
+    try (PreparedStatement ps = cn.prepareStatement(qry)) {
+        ps.setString(1, nuevoEstado);
+        ps.setInt(2, ticketId);
+        return ps.executeUpdate() > 0;
+    }
+}
+    // Actualizar el estado de un ticket (DISPONIBLE, VENDIDO, RESERVADO)
+public boolean actualizarEstado(int ticketId, String nuevoEstado) {
+    String qry = "UPDATE ticket SET estado = ? WHERE id = ?";
+    try (Connection con = neon.getConnection();
+         PreparedStatement ps = con.prepareStatement(qry)) {
+        ps.setString(1, nuevoEstado);
+        ps.setInt(2, ticketId);
+        int filas = ps.executeUpdate();
+        return filas > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+// Verificar si hay capacidad disponible en un partido
+public boolean hayCapacidadDisponible(int partidoId, int cantidadAVender) {
+    String sqlOcupados = "SELECT COUNT(*) as ocupados FROM ticket WHERE partido_id = ? AND estado IN ('VENDIDO', 'RESERVADO')";
+    String sqlCapacidad = "SELECT capacidad FROM partido WHERE id = ?";
+    
+    try (Connection con = neon.getConnection();
+         PreparedStatement psOcup = con.prepareStatement(sqlOcupados);
+         PreparedStatement psCap = con.prepareStatement(sqlCapacidad)) {
+        
+        // Obtener cantidad de tickets ya vendidos/reservados
+        psOcup.setInt(1, partidoId);
+        ResultSet rsOcup = psOcup.executeQuery();
+        int ocupados = 0;
+        if (rsOcup.next()) {
+            ocupados = rsOcup.getInt(1);
+        }
+        
+        // Obtener capacidad máxima del partido
+        psCap.setInt(1, partidoId);
+        ResultSet rsCap = psCap.executeQuery();
+        int capacidad = 0;
+        if (rsCap.next()) {
+            capacidad = rsCap.getInt("capacidad");
+        } else {
+            // Si la tabla partido no tiene columna 'capacidad', asumimos capacidad ilimitada
+            System.err.println("Advertencia: La tabla partido no tiene columna 'capacidad'. Se omite validación.");
+            return true;
+        }
+        
+        return (ocupados + cantidadAVender) <= capacidad;
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false; // En caso de error, asumimos que no hay capacidad
+    }
+}
 }

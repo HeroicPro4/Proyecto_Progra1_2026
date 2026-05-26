@@ -109,4 +109,15 @@ public class Detalle_ventaDAO {
         }
         return false;
     }
+    public boolean GuardarConConexion(Connection cn, Detalle_ventaModel dv) throws SQLException {
+    double ivaCalculado = dv.precio * 0.12;
+    String qry = "INSERT INTO detalle_venta(venta_id, ticket_id, precio, iva) VALUES(?,?,?,?)";
+    try (PreparedStatement ps = cn.prepareStatement(qry)) {
+        ps.setInt(1, dv.idventa);
+        ps.setInt(2, dv.idtikect);
+        ps.setDouble(3, dv.precio);
+        ps.setDouble(4, ivaCalculado);
+        return ps.executeUpdate() > 0;
+    }
+}
 }

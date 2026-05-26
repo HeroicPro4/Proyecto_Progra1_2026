@@ -21,6 +21,8 @@ public class Detalle_venta_view extends javax.swing.JInternalFrame {
      */
     public Detalle_venta_view() {
         initComponents();
+        this.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }
 
     /**
@@ -50,6 +52,7 @@ public class Detalle_venta_view extends javax.swing.JInternalFrame {
         btnConsultar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
+        setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -116,7 +119,7 @@ public class Detalle_venta_view extends javax.swing.JInternalFrame {
                                     .addComponent(jScrollPane3)
                                     .addComponent(jScrollPane4)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 96, Short.MAX_VALUE)
+                                .addGap(0, 108, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(232, 232, 232))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -143,9 +146,7 @@ public class Detalle_venta_view extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3))
+                    .addComponent(jLabel3)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -182,9 +183,9 @@ public class Detalle_venta_view extends javax.swing.JInternalFrame {
             int idventa = Integer.parseInt(txtIdventa.getText());
             int idticket = Integer.parseInt(txtIdticket.getText());
             double precio = Double.parseDouble(txtPrecio.getText());
-            double iva = Double.parseDouble(txtIva.getText());
+           // double iva = Double.parseDouble(txtIva.getText());
            
-           dvc.Guardar(idventa, idticket, precio, iva);
+           dvc.Guardar(idventa, idticket, precio /*iva*/);
        }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error en los datos.");
         }

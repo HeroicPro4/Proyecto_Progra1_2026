@@ -9,6 +9,7 @@ import Tickets.*;
 import Ventas.*;
 import Usuarios.*;
 import Detalle_venta.*;
+import Factura.FacturaTickets;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -42,10 +43,10 @@ LocalDate actualdate = LocalDate.now();
 // </editor-fold>
 //-----------------------------------------------     
 // <editor-fold defaultstate="collapsed" desc="Configuraciones de Botones">
-paneles = new JPanel[] { btn_princp, btn_emp, btn_prod, btn_prov, btn_client, btn_user, btn_fact }; 
+paneles = new JPanel[] { btn_princp, btn_emp, btn_prod, btn_prov, btn_client, btn_user, btn_fact, btn_fact1 }; 
     Color colorNormal = new Color(47,78,254);  
     Color colorHover = new Color(129,176,254);   
-    Color colorSeleccionado = new Color(47,78,254);
+    Color colorSeleccionado = new Color(47,72,192);
 
         for (JPanel panel : paneles) {
             panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,6 +122,8 @@ Init.setVisible(true);
         btb_user_txt = new javax.swing.JLabel();
         btn_fact = new javax.swing.JPanel();
         btb_fact_txt = new javax.swing.JLabel();
+        btn_fact1 = new javax.swing.JPanel();
+        btb_fact_txt1 = new javax.swing.JLabel();
         Sub_Header = new javax.swing.JPanel();
         fecha = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
@@ -365,7 +368,7 @@ Init.setVisible(true);
         btb_user_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_user_txt.setForeground(new java.awt.Color(255, 255, 255));
         btb_user_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file-chart.png"))); // NOI18N
-        btb_user_txt.setText("Reportes Ventas");
+        btb_user_txt.setText("Reporte Ventas");
 
         javax.swing.GroupLayout btn_userLayout = new javax.swing.GroupLayout(btn_user);
         btn_user.setLayout(btn_userLayout);
@@ -413,6 +416,35 @@ Init.setVisible(true);
                 .addGap(18, 18, 18))
         );
 
+        btn_fact1.setBackground(new java.awt.Color(47, 78, 254));
+        btn_fact1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_fact1MouseClicked(evt);
+            }
+        });
+
+        btb_fact_txt1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btb_fact_txt1.setForeground(new java.awt.Color(255, 255, 255));
+        btb_fact_txt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file-chart.png"))); // NOI18N
+        btb_fact_txt1.setText("Factura");
+
+        javax.swing.GroupLayout btn_fact1Layout = new javax.swing.GroupLayout(btn_fact1);
+        btn_fact1.setLayout(btn_fact1Layout);
+        btn_fact1Layout.setHorizontalGroup(
+            btn_fact1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_fact1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btb_fact_txt1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btn_fact1Layout.setVerticalGroup(
+            btn_fact1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_fact1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(btb_fact_txt1)
+                .addGap(18, 18, 18))
+        );
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -430,7 +462,8 @@ Init.setVisible(true);
                         .addGap(15, 15, 15)
                         .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Title)
-                            .addComponent(Title_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Title_Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_fact1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
@@ -454,7 +487,9 @@ Init.setVisible(true);
                 .addComponent(btn_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_fact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(btn_fact1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         Sub_Header.setBackground(new java.awt.Color(129, 176, 254));
@@ -647,7 +682,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_btn_clientMouseClicked
 
     private void btn_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_userMouseClicked
-    Detalle_venta_view Init= new Detalle_venta_view();
+    viewVentas Init= new viewVentas();
     DesktopPane.add(Init);
     Init.setVisible(true);
         try{
@@ -658,7 +693,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_btn_userMouseClicked
 
     private void btn_factMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_factMouseClicked
-    viewVentas init = new viewVentas();
+    Detalle_venta_view init = new Detalle_venta_view();
     DesktopPane.add(init);
     init.setVisible(true);
     try {
@@ -667,6 +702,19 @@ Init.setVisible(true);
         e.printStackTrace();
     }
     }//GEN-LAST:event_btn_factMouseClicked
+
+    private void btn_fact1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_fact1MouseClicked
+        // TODO add your handling code here:
+        FacturaTickets init = new FacturaTickets();
+    DesktopPane.add(init);
+    init.setVisible(true);
+    try {
+        init.setSelected(true);
+    } catch (java.beans.PropertyVetoException e) {
+        e.printStackTrace();
+    }
+
+    }//GEN-LAST:event_btn_fact1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -723,12 +771,14 @@ Init.setVisible(true);
     private javax.swing.JLabel btb_client_txt;
     private javax.swing.JLabel btb_emp_txt;
     private javax.swing.JLabel btb_fact_txt;
+    private javax.swing.JLabel btb_fact_txt1;
     private javax.swing.JLabel btb_prod_txt;
     private javax.swing.JLabel btb_prov_txt;
     private javax.swing.JLabel btb_user_txt;
     private javax.swing.JPanel btn_client;
     private javax.swing.JPanel btn_emp;
     private javax.swing.JPanel btn_fact;
+    private javax.swing.JPanel btn_fact1;
     private javax.swing.JPanel btn_princp;
     private javax.swing.JPanel btn_prod;
     private javax.swing.JPanel btn_prov;
