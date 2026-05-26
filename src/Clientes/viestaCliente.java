@@ -5,10 +5,7 @@
 package Clientes;
 
 import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class viestaCliente extends javax.swing.JInternalFrame {
@@ -26,9 +23,6 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         TablaCliente.setModel(ModeloTabla);
         CargarTabla();
-        SoloLetra(txtNombre);
-        SoloLetra(txtApellido);
-        SoloNumeros(txtTelefono);
     }
 
     private void CargarTabla(){
@@ -37,36 +31,6 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         for(ClienteModel CliMod: Controler.LIstaTodos() ){
         ModeloTabla.addRow(new Object[]{CliMod.getId(),CliMod.getNombre(),CliMod.getApellido(),CliMod.getTelefono(),CliMod.getEmail(),CliMod.getDireccion()});
         }
-    }
-    
-     public void SoloLetra(JTextField a){
-    
-        a.addKeyListener(new KeyAdapter() {
-        
-            public void keyTyped(KeyEvent e){
-            
-                char c=e.getKeyChar();
-                if(!Character.isLetter(c) && !Character.isWhitespace(c)){
-                    getToolkit().beep();
-                    e.consume();
-                }
-            }
-        });  
-    }
-     
-      public void SoloNumeros(JTextField a){
-    
-        a.addKeyListener(new KeyAdapter() {
-        
-            public void keyTyped(KeyEvent e){
-            
-                char c=e.getKeyChar();
-                if(Character.isLetter(c)){
-                    getToolkit().beep();
-                    e.consume();
-                }
-            }
-        });  
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -132,11 +96,6 @@ public class viestaCliente extends javax.swing.JInternalFrame {
 
         txtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtNombre.setBorder(null);
-        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtNombreMousePressed(evt);
-            }
-        });
         background.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 280, 30));
 
         txtApellido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -191,7 +150,7 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, 370));
 
         bntGuardar.setBackground(new java.awt.Color(47, 78, 254));
-        bntGuardar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
+        bntGuardar.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
         bntGuardar.setForeground(new java.awt.Color(255, 255, 255));
         bntGuardar.setText("Guardar");
         bntGuardar.setBorder(null);
@@ -207,7 +166,7 @@ public class viestaCliente extends javax.swing.JInternalFrame {
         background.add(bntGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 100, 40));
 
         bntLimpiar.setBackground(new java.awt.Color(47, 78, 254));
-        bntLimpiar.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
+        bntLimpiar.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
         bntLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         bntLimpiar.setText("Limpiar");
         bntLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -300,11 +259,6 @@ public class viestaCliente extends javax.swing.JInternalFrame {
     private void bntConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntConsultarActionPerformed
   
         String ids = JOptionPane.showInputDialog("ingrese a id a buscar");
-        
-        if(ids == null){
-        
-            return;
-        }
         
         try{
         
@@ -407,10 +361,6 @@ public class viestaCliente extends javax.swing.JInternalFrame {
     private void bntActualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntActualizarMouseExited
        bntActualizar.setBackground(new Color(47, 78,254));
     }//GEN-LAST:event_bntActualizarMouseExited
-
-    private void txtNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMousePressed
-        
-    }//GEN-LAST:event_txtNombreMousePressed
 
 private void searchbyid(int id) {
     ModeloTabla.setRowCount(0); // Limpiar tabla
