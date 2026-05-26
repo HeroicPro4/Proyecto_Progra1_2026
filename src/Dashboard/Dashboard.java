@@ -368,7 +368,7 @@ Init.setVisible(true);
         btb_user_txt.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btb_user_txt.setForeground(new java.awt.Color(255, 255, 255));
         btb_user_txt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/file-chart.png"))); // NOI18N
-        btb_user_txt.setText("Reportes Ventas");
+        btb_user_txt.setText("Reporte Ventas");
 
         javax.swing.GroupLayout btn_userLayout = new javax.swing.GroupLayout(btn_user);
         btn_user.setLayout(btn_userLayout);
@@ -682,7 +682,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_btn_clientMouseClicked
 
     private void btn_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_userMouseClicked
-    Detalle_venta_view Init= new Detalle_venta_view();
+    viewVentas Init= new viewVentas();
     DesktopPane.add(Init);
     Init.setVisible(true);
         try{
@@ -693,7 +693,7 @@ Init.setVisible(true);
     }//GEN-LAST:event_btn_userMouseClicked
 
     private void btn_factMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_factMouseClicked
-    viewVentas init = new viewVentas();
+    Detalle_venta_view init = new Detalle_venta_view();
     DesktopPane.add(init);
     init.setVisible(true);
     try {
