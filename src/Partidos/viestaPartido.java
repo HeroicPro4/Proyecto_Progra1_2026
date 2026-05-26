@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import javax.swing.JTextField;
 
-public class viestaPartido extends javax.swing.JFrame {
+public class viestaPartido extends javax.swing.JInternalFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(viestaPartido.class.getName());
 

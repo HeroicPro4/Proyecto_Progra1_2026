@@ -25,6 +25,9 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         initComponents();
         TablaTiket.setModel(ModeloTabla);
         CargarTabla();
+        this.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+    
         SoloNumeros(txtIDpartido);
         SoloNumeros(txtNumerodeAsiento);
         SoloNumerosparaPrecio(txtPrecio);
