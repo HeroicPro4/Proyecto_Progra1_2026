@@ -18,30 +18,26 @@ public class Ventas_DAO {
     private final Conexion neon = new Conexion();
     String qry;
 
-    public boolean guardar(VentasModel vt) {
-
-        qry = "INSERT INTO venta(fecha, cliente_id, usuario_id, total) VALUES(?,?,?,?)";
-
-        try (
-            Connection cn = neon.getConnection();
-            PreparedStatement ps = cn.prepareStatement(qry);
-        ) {
-            ps.setDate(1, vt.fecha);
-            ps.setInt(2, vt.getIdCliente());
-            ps.setInt(3, vt.getIdUsuario());
-            ps.setDouble(4, vt.getTotal());
-
-            ps.executeUpdate();
-
-            ps.close();
-            cn.close();
-
-            return true;
-        } catch (SQLException e) {
-            System.out.println(e.getStackTrace());
+    public int guardar(VentasModel vt) throws SQLException {
+       qry = "INSERT INTO venta(fecha, cliente_id, usuario_id, total) VALUES(?,?,?,?)";
+    int generatedId = -1;
+    try (Connection cn = neon.getConnection();
+         PreparedStatement ps = cn.prepareStatement(qry, Statement.RETURN_GENERATED_KEYS)) {
+        ps.setDate(1, vt.fecha);
+        ps.setInt(2, vt.getIdCliente());
+        ps.setInt(3, vt.getIdUsuario());
+        ps.setDouble(4, vt.getTotal());
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            generatedId = rs.getInt(1);
         }
-        return false;
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return generatedId;
+    }
+
 
     public boolean Modificar(VentasModel vt) {
 
@@ -157,4 +153,18 @@ public class Ventas_DAO {
         }
         return lista;
     }
+    
+    public int guardarConRetorno(Connection cn, VentasModel vt) throws SQLException {
+    String qry = "INSERT INTO venta(fecha, cliente_id, usuario_id, total) VALUES(?,?,?,?)";
+    try (PreparedStatement ps = cn.prepareStatement(qry, Statement.RETURN_GENERATED_KEYS)) {
+        ps.setDate(1, vt.fecha);
+        ps.setInt(2, vt.getIdCliente());
+        ps.setInt(3, vt.getIdUsuario());
+        ps.setDouble(4, vt.getTotal());
+        ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) return rs.getInt(1);
+        else return -1;
+    }
+}
 }

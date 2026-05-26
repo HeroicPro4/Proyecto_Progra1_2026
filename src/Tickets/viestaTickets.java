@@ -22,6 +22,8 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         initComponents();
         TablaTiket.setModel(ModeloTabla);
         CargarTabla();
+        this.setBorder(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }
 
     private void CargarTabla(){
@@ -59,6 +61,7 @@ public class viestaTickets extends javax.swing.JInternalFrame {
         CbEstado = new javax.swing.JComboBox<>();
         CbSeccion = new javax.swing.JComboBox<>();
 
+        setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 750));
 
