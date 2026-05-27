@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author adrir
+ * @author adrir 
  */
 public class tiket_dao {
     
