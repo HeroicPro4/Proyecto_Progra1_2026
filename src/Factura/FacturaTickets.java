@@ -325,7 +325,7 @@ public class FacturaTickets extends JInternalFrame {
         try {
             PDPage page = new PDPage();
             doc.addPage(page);
-            File fontFile = new File("C:\\Users\\tonit\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto_1\\src\\Otros_recursos\\Roboto-Medium.ttf");
+            File fontFile = new File("src/Otros_recursos/Roboto-Medium.ttf");
             PDType0Font font = PDType0Font.load(doc, fontFile);
 
             PDPageContentStream content = new PDPageContentStream(doc, page);
